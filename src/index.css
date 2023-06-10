@@ -1,0 +1,16 @@
+body {
+  margin:0px 0px;
+  font-family:Roboto, Helvetica, sans-serif;
+  background-color: #ffffff;
+
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 
+.book-item {
+  width: 100%;
+} */
