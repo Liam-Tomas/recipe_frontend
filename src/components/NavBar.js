@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FirebaseAuthContext } from '../FirebaseAuthContext';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { AiOutlineMenu } from 'react-icons/ai';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { Link } from "react-router-dom";
+import { getAuth, signOut } from 'firebase/auth';
+import ThemeToggle from './ThemeToggle';
+import { useTheme } from '@mui/material/styles';
 
 
-export default function NavBar() {
+export default function NavBar({ theme, setTheme }) {
+  const currentUser = useContext(FirebaseAuthContext);
+
+
+  const handleLogout = () => {
+    const auth = getAuth();
+    signOut(auth).catch((error) => {
+      console.error(error);
+    });
+  };
+
   function ElevationScroll({ children }) {
     const trigger = useScrollTrigger({
       disableHysteresis: true,
@@ -19,32 +33,54 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <ElevationScroll style={{
-        backgroundColor: 'red',
-      }}>
+      <ElevationScroll>
         <AppBar position="fixed" sx={{
-          background: '#f5f7fa98',
+          background: theme.palette.background.default,
           color: 'black',
           borderBottom: '1px solid lightgrey',
+          padding: '0px 20px'
         }}>
           <Toolbar>
             <AiOutlineMenu style={{
-              fontSize: '1.5rem',
-              marginRight: '15px',
-            }} />    
+              fontSize: '1.75rem',
+              margin: '0',
+              marginRight: '20px'
+            }} />
+            <ThemeToggle theme={theme} setTheme={setTheme} />
             <Typography variant="h6" component="div" sx={{
               flexGrow: 1,
-              fontSize: '1.25rem',
+              fontSize: '1.4rem',
             }}>
-              RECIPE FINDER
+              FoodieHub
+
             </Typography>
-            {/* <Button color="inherit">Login</Button>
-            <Button variant="contained">Sign Up</Button> */}
-            <Button href="/explore" variant="text">Explore</Button>
-            <Button href="/recipes" variant="text">My Recipes</Button>
+            <Button href="/" variant="text" sx={{
+              margin: '0 8px',
+              color: theme.palette.primary.other,
+            }}>Home</Button>
+            <Button href="/explore" variant="text" sx={{
+              margin: '0 8px', color: theme.palette.primary.other,
+            }}>Explore</Button>
+            {currentUser ? (
+              <>
+                <Typography variant="subtitle1" sx={{ margin: '0 8px' }}>Welcome, {currentUser.email}</Typography>
+                <Button onClick={handleLogout} variant="text" sx={{ margin: '0 8px' }}>Logout</Button>
+              </>
+            ) : (
+              <>
+                <Button href="/login" variant="text" sx={{
+                  margin: '0 8px', color: theme.palette.primary.other,
+                }}>Login</Button>
+                <Button href="/register" variant="contained" sx={{ margin: '0 0px' }}>Register</Button>
+              </>
+            )}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
     </Box>
   );
 }
+
+
+// Good color:
+// rgb(245 247 250)

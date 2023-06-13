@@ -16,7 +16,7 @@ const StyledSearchContainer = styled('div')`
   border: 1px solid lightgrey;
   border-radius: 10px;
   background-color: white;
-  width: 600px;
+  width: 450px;
   margin-top: 10px;
 `;
 
@@ -58,6 +58,7 @@ const SearchBar = ({ onSearch }) => {
           />
         </StyledSearchContainer>
       </form>
+      
     </SearchContainer>
   );
 };
