@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
   margin-top: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
 `;
 

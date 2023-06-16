@@ -14,14 +14,16 @@ import { useTheme } from '@mui/material/styles';
 
 const StyledRecipe = styled.li`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border-radius:5px;
 
   .card {
     background-color: ${props => props.theme.palette.background.paper};
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
     cursor: pointer;
     :hover {
       background-color: ;
@@ -34,6 +36,9 @@ const StyledRecipe = styled.li`
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    
   }
 
 `;
@@ -89,7 +94,7 @@ const Recipe = ({ recipe }) => {
                 By {sourceName}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              Ready in {readyInMinutes} minutes; Serves {servings}
+                Ready in {readyInMinutes} minutes; Serves {servings}
               </Typography>
             </CardContent>
           </div>

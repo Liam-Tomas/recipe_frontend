@@ -2,6 +2,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import React, { useState } from 'react';
 import { styled } from '@mui/system';
 import InputBase from '@mui/material/InputBase';
+import { useTheme } from '@mui/material/styles';
+
 
 const SearchContainer = styled('div')`
   display: flex;
@@ -13,28 +15,28 @@ const StyledSearchContainer = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-  background-color: white;
-  width: 450px;
+  border: 1px solid ${(props) => props.theme.palette.text.tertiary};
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.palette.background.paper};
+  background-color: transparent;
+  width: 400px;
   margin-top: 10px;
 `;
 
 const StyledInputBase = styled(InputBase)`
   flex: 1;
-  padding: 8px 0px;
+  padding: 7px 0px;
   background-color: transparent;
-  color: black;
 `;
 
 const SearchIcon = styled(AiOutlineSearch)`
   margin: 8px;
   pointer-events: none;
-  color: black;
 `;
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const theme = useTheme();
 
   const handleSearch = (event) => {
     event.preventDefault();

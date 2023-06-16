@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import  ComplexSearch from '../components/ComplexSearch'
 import styled from 'styled-components';
+import { Typography } from '@mui/material';
 
 const StyledHeaders = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
   padding-bottom: 0px;
 `;
 
@@ -29,20 +29,17 @@ function ExplorePage() {
             margin: '0px 25px'
         }}>
             <StyledHeaders>
-                <h1 style={{
-                    fontSize: '2.1rem',
-                    color: 'black',
-                    fontWeight: '500',
-                    margin: '0',
-                    padding: '0'
-                }}>Explore a World of Recipes</h1>
-                <h2 style={{
-                    color: 'black',
-                    fontSize: '1.2rem',
-                    margin: '0px',
-                    fontWeight: '400',
+                <Typography variant="h4" style={{
+                    // fontSize: '2.1rem',
+                    // fontWeight: '500',
+                }}>Explore a World of Recipes
+                </Typography>
+                <Typography variant="h6" style={{
+                    // fontSize: '1.2rem',
+                    // fontWeight: '400',
                     padding: '30px'
-                }}>Discover new flavors and unleash your inner chef by searching through our extensive collection of recipes.</h2>
+                }}>Discover new flavors and unleash your inner chef by searching through our extensive collection of recipes.
+                </Typography>
             </StyledHeaders>
             <ComplexSearch/>
             {/* <FilterSearch/> */}

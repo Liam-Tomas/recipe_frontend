@@ -27,7 +27,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#1876d2' : '#0c9f50',
+    backgroundColor: theme.palette.mode === 'dark' ? '#635bff' : '#635bff',
     width: 28,
     height: 28,
     '&:before': {

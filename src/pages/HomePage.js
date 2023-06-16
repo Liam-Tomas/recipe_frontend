@@ -2,15 +2,17 @@ import { Button } from '@mui/material';
 import React from 'react';
 import styled from 'styled-components';
 import AboutCards from '../components/AboutCards'
+import { Typography } from '@mui/material';
+
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
-  gap: 0px;
+  gap: 20px;
   height: 90vh;
-  margin: 0px 150px;
+  margin: 0px 140px;
   background-color: ;
 `;
 
@@ -19,33 +21,31 @@ const LeftColumn = styled.div`
   flex-direction: column;
   align-items: flex-start;
   background-color: ;
-  padding-left: 90px;
-  padding-right: 80px;
+  padding-left: 55px;
+  padding-right: 0px;
 `;
 
 const Title = styled.h1`
   font-size: 46px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-weight: 500;
+  margin-bottom: 5px;
+
 `;
 
 const Subtitle = styled.p`
   font-size: 20px;
-  margin-bottom: 0px;
-  color: grey;
-  font-weight: 400;
+  font-weight: 00;
+  margin-bottom: 5px;
 `;
 
 const RightColumn = styled.div`
   display: flex;
   align-items: center;
   background-color: ;
-  padding: 0px;
-  margin: 0px;
 `;
 
 const Image = styled.img`
-  max-width: 85%;
+  max-width: 90%;
   margin-top: 70px;
   height: auto;
   border-radius: 10px;
@@ -65,7 +65,7 @@ const HomePage = () => {
     <div>
       <Container>
         <LeftColumn>
-          <Title>The only recipe app <br /> you'll ever need.</Title>
+          <Typography variant="h2">The only recipe app you'll ever need.</Typography>
           <Subtitle>
             Welcome to Recipe Tracker, a platform that provides a seamless recipe
             search experience, allowing you to find the perfect dishes quickly and effortlessly.
@@ -77,7 +77,7 @@ const HomePage = () => {
           with MongoDB as the database and a modern UI design.
         </Subtitle> */}
           <Button href="/explore" variant="contained" style={{
-            marginTop: '33px',
+            marginTop: '23px',
             fontSize: '15px'
           }}>Get Started</Button>
         </LeftColumn>
@@ -87,7 +87,7 @@ const HomePage = () => {
       </Container>
       <AboutCards />
       <GetStartedBtn>
-        <Button href="/explore" variant="contained" style={{
+        <Button href="/explore" variant="outlined" style={{
           fontSize: '17px',
         }}>Get Started</Button>
       </GetStartedBtn>

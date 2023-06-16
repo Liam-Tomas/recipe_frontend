@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import styled from 'styled-components';
-
 import spoonacularLogo from '../images/spoonacular-logo.svg';
 import mernLogo from '../images/MERN-logo.png';
 import materialUILogo from '../images/material-ui.svg';
 import firebaseLogo from '../images/Firebase_Logo.svg';
 // import exampleLogo from '../assets/example-logo.png';
 // import mongodbLogo from '../assets/mongodb-logo.png';
+import { useTheme } from '@mui/material/styles';
+
 
 const CardGrid = styled.div`
   display: grid;
@@ -23,7 +24,7 @@ const StyledCard = styled.div`
   padding: 20px;
   border-radius: 20px;
   box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
-  background-color:#fff;
+  background-color: ${(props) => props.theme.palette.background.paper};
 `;
 
 const LogoImage = styled.img`
@@ -40,6 +41,7 @@ const LogoContainer = styled.div`
 `
 
 const TechnicalCards = () => {
+    const theme = useTheme();
     const technicalData = [
         {
             title: 'Leveraging the Spoonacular API',
@@ -85,9 +87,11 @@ const TechnicalCards = () => {
             {technicalData.map((technical, index) => (
                 <StyledCard key={index}>
                     <CardContent>
-                        <Typography variant="h6">{technical.title}</Typography>
+                        <Typography variant="h5">{technical.title}</Typography>
                         <Typography variant="body1" style={{
                             margin: '20px 0px',
+                            fontSize: '1.1rem',
+                            color: theme.palette.text.secondary,
                         }}>{technical.description}</Typography>
                         <LogoContainer>
                             <LogoImage src={technical.logo} alt={`${technical.title} Logo`} />
