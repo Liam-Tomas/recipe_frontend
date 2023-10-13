@@ -21,6 +21,14 @@ const StyledSearchContainer = styled('div')`
   background-color: transparent;
   width: 400px;
   margin-top: 10px;
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme.palette.text.primary};
+  }
+
+  &:focus-within {
+    border: 1px solid ${(props) => props.theme.palette.primary.main};
+  }
 `;
 
 const StyledInputBase = styled(InputBase)`
@@ -34,7 +42,7 @@ const SearchIcon = styled(AiOutlineSearch)`
   pointer-events: none;
 `;
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const theme = useTheme();
 
@@ -44,7 +52,9 @@ const SearchBar = ({ onSearch }) => {
   };
 
   const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+    const newTerm = event.target.value;
+    setSearchTerm(newTerm);
+    if (onChange) onChange(newTerm);  // Propagate change up to ComplexSearch
   };
 
   return (
@@ -60,7 +70,7 @@ const SearchBar = ({ onSearch }) => {
           />
         </StyledSearchContainer>
       </form>
-      
+
     </SearchContainer>
   );
 };

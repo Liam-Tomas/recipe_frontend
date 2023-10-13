@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
   margin-top: auto;
-  margin-bottom: 10px;
+  padding: 10px;
   text-align: center;
+  background-color: none;
 `;
 
 const FooterText = styled.p`

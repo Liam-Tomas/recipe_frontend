@@ -2,6 +2,8 @@ import React from 'react';
 import { lightTheme, darkTheme } from './ThemeWrapper';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
+import { useTheme } from '@mui/material/styles';
+
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -27,7 +29,8 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#635bff' : '#635bff',
+    backgroundColor: theme.palette.mode === 'dark' ? theme.palette.primary.main : theme.palette.primary.main,
+
     width: 28,
     height: 28,
     '&:before': {
@@ -52,6 +55,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const ThemeToggle = ({ theme, setTheme }) => {
+
   const handleChange = (event) => {
     setTheme(event.target.checked ? darkTheme : lightTheme);
   };

@@ -1,38 +1,148 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, FormControlLabel, Checkbox } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
 
 const CreateRecipeForm = ({ onNewRecipe }) => {
+  const theme = useTheme();
+
   const [recipeData, setRecipeData] = useState({
     title: '',
     image: '',
+    servings: '',
+    vegetarian: false,
+    vegan: false,
+    glutenFree: false,
+    dairyFree: false,
+    preparationMinutes: '',
+    summary: '',
+    cuisines: [],
+    dishTypes: [],
+    diets: [],
+    occasions: [],
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setRecipeData((prevData) => ({ ...prevData, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    const fieldValue = type === 'checkbox' ? checked : value;
+    setRecipeData((prevData) => ({ ...prevData, [name]: fieldValue }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onNewRecipe(recipeData);
-    setRecipeData({ title: '', image: '' }); // Reset the form fields
+    setRecipeData({
+      title: '',
+      image: '',
+      servings: '',
+      vegetarian: false,
+      vegan: false,
+      glutenFree: false,
+      dairyFree: false,
+      preparationMinutes: '',
+      summary: '',
+      cuisines: [],
+      dishTypes: [],
+      diets: [],
+      occasions: [],
+    });
   };
 
   return (
     <div style={{
-      display: 'flex',
-      flexDirection: '',
-      justifyContent: 'center',
-      minHeight: '30vh',
-      alignItems: 'center',
-      alignContent:'center'
+      width: '550px',
+      backgroundColor: theme.palette.background.default,
+      padding: '50px'
     }}>
       <form onSubmit={handleSubmit} style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}>
-        <TextField label="Title" type="text" name="title" value={recipeData.title} onChange={handleChange} variant="outlined" style={{}} />
-        <TextField label="Servings" type="number" name="servings" value={recipeData.servings} onChange={handleChange} variant="outlined" style={{}} />
-        <TextField label="Image URL" type="text" name="image" value={recipeData.image} onChange={handleChange} variant="outlined" style={{ }} />
-        <Button type="submit" variant="contained" color="primary">Create Recipe</Button>
+        <TextField
+          label="Title"
+          type="text"
+          name="title"
+          value={recipeData.title}
+          onChange={handleChange}
+          variant="outlined"
+          style={{ marginBottom: '10px', width: '100%' }}
+        />
+        <TextField
+          label="Image URL"
+          type="text"
+          name="image"
+          value={recipeData.image}
+          onChange={handleChange}
+          variant="outlined"
+          style={{ marginBottom: '10px', width: '100%' }}
+        />
+        <div style={{ display: 'flex', marginBottom: '10px', width:'100%' }}>
+          <TextField
+            label="Servings"
+            type="number"
+            name="servings"
+            value={recipeData.servings}
+            onChange={handleChange}
+            variant="outlined"
+            style={{ marginRight: '10px', width: '50%' }}
+          />
+          <TextField
+            label="Prep Time (minutes)"
+            type="number"
+            name="preparationMinutes"
+            value={recipeData.preparationMinutes}
+            onChange={handleChange}
+            variant="outlined"
+            style={{ width: '50%' }}
+          />
+        </div>
+        <TextField
+          label="Summary"
+          multiline
+          rows={4}
+          name="summary"
+          value={recipeData.summary}
+          onChange={handleChange}
+          variant="outlined"
+          style={{ marginBottom: '10px', width: '100%' }}
+        />
+        <div style={{ display: 'flex', marginBottom: '10px' }}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="vegetarian"
+                checked={recipeData.vegetarian}
+                onChange={handleChange}
+              />
+            }
+            label="Vegetarian"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="vegan"
+                checked={recipeData.vegan}
+                onChange={handleChange}
+              />
+            }
+            label="Vegan"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="glutenFree"
+                checked={recipeData.glutenFree}
+                onChange={handleChange}
+              />
+            }
+            label="Gluten Free"
+          />
+        </div>
+        {/* Include more fields as needed */}
+        <Button type="submit" variant="contained" color="primary" style={{marginTop:'15px'}}>
+          Create Recipe
+        </Button>
       </form>
     </div>
   );

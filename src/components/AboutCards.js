@@ -3,6 +3,8 @@ import { Card, CardContent, Typography } from '@mui/material';
 import styled from 'styled-components';
 import spoonacularLogo from '../images/spoonacular-logo.svg';
 import mernLogo from '../images/MERN-logo.png';
+import crudLogo from '../images/MERN-logo.png';
+import mongoLogo from '../images/mongodb.svg'
 import materialUILogo from '../images/material-ui.svg';
 import firebaseLogo from '../images/Firebase_Logo.svg';
 // import exampleLogo from '../assets/example-logo.png';
@@ -45,40 +47,41 @@ const TechnicalCards = () => {
     const technicalData = [
         {
             title: 'Leveraging the Spoonacular API',
-            description:
-                'Our recipe app utilizes the Spoonacular API, enabling us to access a vast database of recipes and nutritional information. This allows users to discover a wide variety of recipes from around the world and explore detailed ingredient lists, instructions, and nutritional data.',
-              logo: spoonacularLogo,
+            description: 'My recipe app utilizes the Spoonacular API, enabling us to access a vast database of recipes and explore detailed ingredient lists, instructions, and nutritional data',
+            logo: spoonacularLogo,
         },
         {
             title: 'Built with the MERN Stack',
             description:
-                'Our app is developed using the MERN (MongoDB, Express.js, React, Node.js) stack, providing a robust and scalable foundation for seamless recipe browsing, searching, and management.',
+                'The app is developed using the MERN (MongoDB, Express.js, React, Node.js) stack, providing a robust and scalable foundation for recipe browsing, searching, and management.',
             logo: mernLogo,
         },
         {
             title: 'Beautiful and Responsive UI with Material-UI',
             description:
-                'We leverage Material-UI, a popular React component library, to create an intuitive and visually appealing user interface that adapts smoothly to different devices and screen sizes.',
+                'My app leverages Material-UI, a React component library, to create an intuitive and visually appealing user interface that adapts smoothly across devices.',
             logo: materialUILogo,
         },
         {
             title: 'Secure User Authentication with Firebase',
             description:
-                'Our app integrates Firebase authentication to provide a secure and reliable login/signup process, ensuring that user data and interactions are protected.',
-              logo: firebaseLogo,
+                'For user authentication, the app integrates with Firebase authentication to provide a secure and reliable login/signup process, ensuring that user data and interactions are protected.',
+            logo: firebaseLogo,
         },
         // Add more technical aspects here
         {
-            title: 'Example Technical Aspect',
-            description:
-                'This is an example of another technical aspect of our app. Add more cards like this to showcase additional features and technologies.',
-            //   logo: exampleLogo,
+            title: 'Full CRUD Capabilities',
+            description: 'Empowered by the MERN stack, my application has comprehensive CRUD (Create, Read, Update, Delete) operations. This gives users  full control over their recipes and data.',
+            logo: mernLogo,
+
         },
         {
             title: 'Data Persistence with MongoDB',
             description:
-                'Our app utilizes MongoDB, a NoSQL database, for data persistence. This allows us to efficiently store and retrieve recipe information, user profiles, and other data, ensuring seamless user experience and data consistency.',
+                'The backend utilizes MongoDB, a NoSQL database, for data persistence. This allows us to efficiently store and retrieve recipe info, user favorites, and other data, ensuring seamless user experience and data consistency.',
             //   logo: mongodbLogo,
+            logo: mongoLogo,
+
         },
     ];
 

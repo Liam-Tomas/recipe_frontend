@@ -23,20 +23,20 @@ function ExplorePage() {
             //   background: 'linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%)',
             // background: 'linear-gradient(to bottom, #f0f2f0, #000c40)',
             background:'',
-            paddingTop: '125px',
+            paddingTop: '115px',
             paddingBottom: '75px',
             marginBottom: '0px',
-            margin: '0px 25px'
+            margin: '0px 55px'
         }}>
             <StyledHeaders>
                 <Typography variant="h4" style={{
-                    // fontSize: '2.1rem',
-                    // fontWeight: '500',
+                    fontSize: '2.3rem',
+                    fontWeight: '500',
                 }}>Explore a World of Recipes
                 </Typography>
                 <Typography variant="h6" style={{
-                    // fontSize: '1.2rem',
-                    // fontWeight: '400',
+                    fontSize: '1.3rem',
+                    fontWeight: '400',
                     padding: '30px'
                 }}>Discover new flavors and unleash your inner chef by searching through our extensive collection of recipes.
                 </Typography>

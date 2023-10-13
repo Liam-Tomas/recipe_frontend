@@ -2,6 +2,14 @@ body {
   margin:0px 0px;
   font-family:Roboto, Helvetica, sans-serif;
   background-color: #f5f7fa;
+  list-style: none;
+
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
 }
 
@@ -10,8 +18,7 @@ a {
   color: inherit;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+ul {
+  list-style: none;
+
 }
