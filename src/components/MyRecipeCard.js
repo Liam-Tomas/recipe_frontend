@@ -5,7 +5,6 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import { useTheme } from '@mui/material/styles';
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
 import EditRecipeForm from './EditRecipeForm';
 import Modal from '@mui/material/Modal';
@@ -43,9 +42,8 @@ const StyledRecipe = styled.li`
 `;
 
 const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
-  const { title, image, sourceUrl, servings, preparationMinutes, summary, aggregateLikes, sourceName, diets } = recipe;
+  const { title, image, sourceUrl, servings, preparationMinutes, summary, vegetarian, aggregateLikes, sourceName, diets } = recipe;
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-  const theme = useTheme();
   const currentUser = useContext(FirebaseAuthContext);
   const [open, setOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);

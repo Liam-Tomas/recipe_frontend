@@ -110,8 +110,6 @@ const HomePage = () => {
       // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #625bff 60%, white 100%)',
       // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #ffb05b 60%, white 100%)',
     
-      
-
     }} >
       <Container>
         <LeftColumn>
@@ -132,7 +130,7 @@ const HomePage = () => {
           <Button href="/register" variant="contained" style={{
             fontSize: '15px',
             marginRight: '15px'
-          }}>Create Account</Button>
+          }}>get started</Button>
           <Button href="/explore" variant="outlined" style={{
             fontSize: '15px'
           }}>Explore</Button>

@@ -11,6 +11,7 @@ const Centered = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 90vh;
+  background-color: background.primary;
 
   .centered-form {
     display: flex;
@@ -19,7 +20,6 @@ const Centered = styled.div`
     gap: 15px;
     width: 18rem;
   }
-
 `;
 
 function EditProfile() {
@@ -72,7 +72,7 @@ function EditProfile() {
     }
 
     return (
-        <Centered>
+        <Centered >
             <h2>Change Password</h2>
             <div class="centered-form">
                 <TextField

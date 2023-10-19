@@ -8,14 +8,11 @@ import { Button, Modal } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
-import EditRecipeForm from './EditRecipeForm';
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const currentUser = useContext(FirebaseAuthContext);
-  const [editingRecipeId, setEditingRecipeId] = useState(null);
-
   
   useEffect(() => {
     const fetchMyRecipes = async () => {
@@ -50,7 +47,6 @@ const MyRecipes = () => {
       const response = await axios.delete(`http://localhost:3000/recipes/myrecipes/${recipeId}`, {
         data: { userUID: currentUser.uid }
       });
-
       if (response.status === 200) {
         setRecipes((prevRecipes) => prevRecipes.filter(recipe => recipe._id !== recipeId));
       }

@@ -4,7 +4,6 @@ import { TextField, Button, Typography } from '@mui/material';
 import styled from 'styled-components';
 import { useTheme } from '@mui/material/styles';
 
-
 const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,7 +15,6 @@ const StyledForm = styled.div`
   min-height:94vh;
 `;
 
-
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,10 +24,10 @@ const Register = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
     const auth = getAuth();
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       setMessage('Successfully signed up. You can now sign in.');
-      // Clear the form fields
 
     } catch (error) {
       console.error("Error during update:", error);
@@ -67,14 +65,11 @@ const Register = () => {
           name="password"
           label="Password"
           type="password"
-          // value={password}
           onChange={(e) => setPassword(e.target.value)}
           style={{
             width: "360px",
             marginBottom: '10px'
           }}
-
-          
         />
         <Button
           type="submit"

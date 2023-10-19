@@ -19,7 +19,6 @@ const EditRecipeForm = ({ initialRecipe, onRecipeUpdate, onClose }) => {
         e.preventDefault();
         onRecipeUpdate(recipeData, initialRecipe._id);
         onClose();  // Close the modal after updating the recipe
-
     };
 
     return (
@@ -123,5 +122,3 @@ const EditRecipeForm = ({ initialRecipe, onRecipeUpdate, onClose }) => {
 };
 
 export default EditRecipeForm;
-
-

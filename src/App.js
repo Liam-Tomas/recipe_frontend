@@ -5,7 +5,6 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import NavBar from './components/NavBar';
 import ExplorePage from './pages/ExplorePage'
 import HomePage from './pages/HomePage'
-import FilterPage from './pages/FilterPage'
 import RecipeDetail from './components/RecipeDetail'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
@@ -54,7 +53,6 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/recipes/:id" element={<RecipeDetail />} />
-                <Route path="/filter" element={<FilterPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/myrecipes" element={<MyRecipePage />} />
