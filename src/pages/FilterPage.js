@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import FilterSearch from '../components/FilterSearch';
+// import React, { useState } from 'react';
+// import FilterSearch from '../components/FilterSearch';
 
-function FilterPage() {
-    const [searchTerm, setSearchTerm] = useState('');
+// function FilterPage() {
+//     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearch = (term) => {
-        setSearchTerm(term);
-    };
+//     const handleSearch = (term) => {
+//         setSearchTerm(term);
+//     };
 
-    return (
-        <div>
-            <FilterSearch/>
-        </div>
-    );
-}
+//     return (
+//         <div>
+//             <FilterSearch/>
+//         </div>
+//     );
+// }
 
-export default FilterPage;
+// export default FilterPage;

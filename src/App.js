@@ -12,8 +12,6 @@ import LoginPage from './pages/LoginPage'
 import MyRecipePage from './pages/MyRecipePage'
 import FavoritesPage from './pages/FavoritesPage'
 import ProfilePage from './pages/ProfilePage'
-
-
 import Footer from './components/Footer';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
@@ -62,7 +60,6 @@ function App() {
                 <Route path="/myrecipes" element={<MyRecipePage />} />
                 <Route path="/favorites" element={<FavoritesPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
-
 
               </Routes>
               <Footer />

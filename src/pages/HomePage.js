@@ -1,109 +1,3 @@
-// import { Button } from '@mui/material';
-// import React from 'react';
-// import styled from 'styled-components';
-// import AboutCards from '../components/AboutCards'
-// import { Typography } from '@mui/material';
-// import HomePic from '../images/home_image1.svg'
-
-// const Container = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 100px;
-//   height: 95vh;
-//   margin: 0px 110px;
-//   background-color: ;
-// `;
-
-// const LeftColumn = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   background-color: ;
-//   padding-left: 80px;
-//   padding-right: 0px;
-// `;
-
-// const Title = styled.h1`
-//   font-size: 42px;
-//   font-weight: 500;
-//   margin-bottom: 5px;
-
-// `;
-
-// const Subtitle = styled.p`
-//   font-size: 18px;
-//   font-weight: 00;
-//   margin-bottom: 5px;
-// `;
-
-// const RightColumn = styled.div`
-//   // display: flex;
-//   // align-items: center;
-//   // background-color: ;
-// `;
-
-// const Image = styled.img`
-//   max-width: 75%;
-//   margin-top:70px;
-//   height: auto;
-//   border-radius: 10px;
-// `;
-
-// const GetStartedBtn = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   alignItems: center;
-//   padding:180px;
-//   `
-
-// const HomePage = () => {
-//   const recipePhoto = 'https://spoonacular.com/application/frontend/images/food-api/ontology2.svg';
-
-//   return (
-//     <div>
-//       <Container>
-//         <LeftColumn>
-//           <Typography variant="h1" style={{
-//             fontSize: '4.15rem'
-//           }}>The only recipe app you'll ever need.</Typography>
-//           <Subtitle style={{
-//             fontSize: '1.3rem'
-//           }}>
-//             Welcome to Recipe Tracker, a platform that provides a seamless recipe
-//             search experience, allowing you to find the perfect dishes quickly and effortlessly.
-//           </Subtitle>
-//           {/* <Subtitle>
-//           This site is a full-stack MERN application, utilizing Node.js,
-//           Express.js, MongoDB, React.js, React Router, and Material-UI.
-//           It provides API endpoints for recipe data and user interactions,
-//           with MongoDB as the database and a modern UI design.
-//         </Subtitle> */}
-//           <Button href="/explore" variant="contained" style={{
-//             marginTop: '23px',
-//             fontSize: '15px'
-//           }}>Get Started</Button>
-//         </LeftColumn>
-//         <RightColumn>
-//           <Image src={HomePic} alt="Recipe Image" />
-//         </RightColumn>
-//       </Container>
-//       <AboutCards />
-//       <GetStartedBtn>
-//         <Button href="/explore" variant="outlined" style={{
-//           fontSize: '17px',
-//         }}>Get Started</Button>
-//       </GetStartedBtn>
-//     </div>
-
-//   );
-// };
-
-// export default HomePage;
-
-
-
 // The Recipe Finder app is a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application
 //  that showcases my skills in building robust and scalable web applications. The app allows users
 //   to explore and discover various recipes, providing a seamless recipe search experience. The 
@@ -238,7 +132,7 @@ const HomePage = () => {
           <Button href="/register" variant="contained" style={{
             fontSize: '15px',
             marginRight: '15px'
-          }}>Get Started</Button>
+          }}>Create Account</Button>
           <Button href="/explore" variant="outlined" style={{
             fontSize: '15px'
           }}>Explore</Button>

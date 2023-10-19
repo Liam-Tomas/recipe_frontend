@@ -1,17 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import Checkbox from '@mui/material/Checkbox';
-import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-import Favorite from '@mui/icons-material/Favorite';
 import { useTheme } from '@mui/material/styles';
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
-
+import EditRecipeForm from './EditRecipeForm';
+import Modal from '@mui/material/Modal';
 
 const StyledRecipe = styled.li`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -45,15 +42,27 @@ const StyledRecipe = styled.li`
 
 `;
 
-const MyRecipeCard = ({ recipe, onRemove }) => {
-  const { title, image, sourceUrl, servings, preparationMinutes, aggregateLikes, sourceName, diets } = recipe;
+const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
+  const { title, image, sourceUrl, servings, preparationMinutes, summary, aggregateLikes, sourceName, diets } = recipe;
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const theme = useTheme();
   const currentUser = useContext(FirebaseAuthContext);
+  const [open, setOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const removeRecipe = () => {
     onRemove(recipe._id); // Call the passed down function with the recipe ID
-};
+  };
+
 
   return (
     <StyledRecipe>
@@ -76,11 +85,12 @@ const MyRecipeCard = ({ recipe, onRemove }) => {
                 {title}
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                By Liam 
+                {summary}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="primary">
                 Ready in {preparationMinutes} minutes; Serves {servings}
               </Typography>
+
             </CardContent>
           </div>
         </Link>
@@ -89,12 +99,31 @@ const MyRecipeCard = ({ recipe, onRemove }) => {
         display: 'flex',
         justifyContent: 'space-between'
       }}>
-        <Button href={`/recipes/${recipe.id}`} variant="text" style={{
+        <Button onClick={() => {
+          setSelectedRecipe(recipe);  // Set the selected recipe
+          handleOpen();              // Open the edit modal
+        }} variant="text" style={{
           padding: '8px 15px',
           fontSize: '.84rem'
         }}>Edit</Button>
         <Button color="secondary" onClick={removeRecipe}>Remove</Button>
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="edit-recipe-title"
+        aria-describedby="edit-recipe-description"
+      >
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <EditRecipeForm initialRecipe={selectedRecipe} onRecipeUpdate={onEdit} onClose={handleClose} />
+        </div>
+      </Modal>
+
     </StyledRecipe>
   );
 };

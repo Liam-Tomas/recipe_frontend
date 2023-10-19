@@ -43,44 +43,44 @@
 
 // export default RecipeFavs;
 
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import FavoritedRecipe from '../components/FavoritedRecipe';
+// import React, { useState } from 'react';
+// import styled from 'styled-components';
+// import FavoritedRecipe from '../components/FavoritedRecipe';
 
-const StyledHeaders = styled.div`
-  // Styles for headers...
-`;
+// const StyledHeaders = styled.div`
+//   // Styles for headers...
+// `;
 
-function RecipeFavs() {
-  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+// function RecipeFavs() {
+//   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
-  // Function to handle adding a recipe to favorites
-  const handleFavoriteClick = (recipe) => {
-    // Check if the recipe is already in favorites
-    const isFavorite = favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id);
+//   // Function to handle adding a recipe to favorites
+//   const handleFavoriteClick = (recipe) => {
+//     // Check if the recipe is already in favorites
+//     const isFavorite = favoriteRecipes.some((favRecipe) => favRecipe.id === recipe.id);
 
-    // Add or remove the recipe from favorites based on its current state
-    if (isFavorite) {
-      const updatedFavorites = favoriteRecipes.filter((favRecipe) => favRecipe.id !== recipe.id);
-      setFavoriteRecipes(updatedFavorites);
-    } else {
-      const updatedFavorites = [...favoriteRecipes, recipe];
-      setFavoriteRecipes(updatedFavorites);
-    }
-  };
+//     // Add or remove the recipe from favorites based on its current state
+//     if (isFavorite) {
+//       const updatedFavorites = favoriteRecipes.filter((favRecipe) => favRecipe.id !== recipe.id);
+//       setFavoriteRecipes(updatedFavorites);
+//     } else {
+//       const updatedFavorites = [...favoriteRecipes, recipe];
+//       setFavoriteRecipes(updatedFavorites);
+//     }
+//   };
 
-  return (
-    <section>
-      <StyledHeaders>
-        {/* Header content... */}
-      </StyledHeaders>
+//   return (
+//     <section>
+//       <StyledHeaders>
+//         {/* Header content... */}
+//       </StyledHeaders>
 
-      {/* Display the favorite recipes */}
-      {favoriteRecipes.map((recipe) => (
-        <FavoritedRecipe key={recipe.id} recipe={recipe} />
-      ))}
-    </section>
-  );
-}
+//       {/* Display the favorite recipes */}
+//       {favoriteRecipes.map((recipe) => (
+//         <FavoritedRecipe key={recipe.id} recipe={recipe} />
+//       ))}
+//     </section>
+//   );
+// }
 
-export default RecipeFavs;
+// export default RecipeFavs;

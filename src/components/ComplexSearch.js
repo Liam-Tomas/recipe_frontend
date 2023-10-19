@@ -811,7 +811,6 @@ const TYPE_OPTIONS = ['none', 'main course', 'breakfast', 'appetizer', 'salad', 
 
 const RESULTS_PER_PAGE = 10; // bc 10 results per page
 
-
 const ComplexSearch = () => {
     const [recipes, setRecipes] = useState([]);
     const [page, setPage] = useState(1);

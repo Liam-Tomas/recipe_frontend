@@ -651,14 +651,12 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
           'x-user-uid': currentUser.uid,
         }
       });
-
       const favorites = await response.json();
-
       const favoriteRecipe = favorites.find(fav => fav.recipeId === recipe.id);
+
       if (favoriteRecipe) {
         setIsFavorite(true);
       }
-
     } catch (error) {
       console.error('Error checking favorite status: ', error);
     }
@@ -667,7 +665,6 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
   useEffect(() => {
     if (currentUser) {
       checkIsFavorite();
-
     }
   }, [currentUser, recipe.id]);
 
