@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import MyRecipe from '../components/MyRecipe';
+import MyRecipe from '../components/UserRecipes/MyRecipe';
 import styled from 'styled-components';
-import { Button, Typography, Modal } from '@mui/material';
-import CreateRecipeForm from '../components/CreateRecipeForm';
-import MyRecipeCard from '../components/MyRecipeCard'
+import { Typography } from '@mui/material';
+
 
 const StyledHeaders = styled.div`
   display: flex;
-  align-items: center;
+align-items: center;
   justify-content: center;
 `;
+
+const MyRecipeContainer = styled.div`
+  padding-top: 115px;
+  padding-bottom: 75px;
+  margin: 0px 55px;
+`
 
 function MyRecipePage() {
 
   return (
-    <div style={{
-      paddingTop: '115px',
-      paddingBottom: '75px',
-      margin: '0px 55px'
-    }}>
+    <MyRecipeContainer >
       <StyledHeaders>
         <Typography variant="h4" style={{
           fontSize: '2.3rem',
@@ -27,7 +28,7 @@ function MyRecipePage() {
         </Typography>
       </StyledHeaders>
       <MyRecipe />
-    </div>
+    </MyRecipeContainer>
   );
 }
 

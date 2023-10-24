@@ -6,7 +6,7 @@ import { useTheme } from '@mui/material/styles';
 const CreateRecipeForm = ({ onNewRecipe }) => {
   const theme = useTheme();
 
-  const [recipeData, setRecipeData] = useState({
+  const INITIAL_RECIPE_STATE = {
     title: '',
     image: '',
     servings: '',
@@ -20,7 +20,10 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
     dishTypes: [],
     diets: [],
     occasions: [],
-  });
+  };
+
+  const [recipeData, setRecipeData] = useState(INITIAL_RECIPE_STATE);
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -31,21 +34,8 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onNewRecipe(recipeData);
-    setRecipeData({
-      title: '',
-      image: '',
-      servings: '',
-      vegetarian: false,
-      vegan: false,
-      glutenFree: false,
-      dairyFree: false,
-      preparationMinutes: '',
-      summary: '',
-      cuisines: [],
-      dishTypes: [],
-      diets: [],
-      occasions: [],
-    });
+    setRecipeData(INITIAL_RECIPE_STATE);  // use the constant here to reset the state
+    ;
   };
 
   return (
@@ -77,7 +67,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
           variant="outlined"
           style={{ marginBottom: '10px', width: '100%' }}
         />
-        <div style={{ display: 'flex', marginBottom: '10px', width:'100%' }}>
+        <div style={{ display: 'flex', marginBottom: '10px', width: '100%' }}>
           <TextField
             label="Servings"
             type="number"
@@ -140,7 +130,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
           />
         </div>
         {/* Include more fields as needed */}
-        <Button type="submit" variant="contained" color="primary" style={{marginTop:'15px'}}>
+        <Button type="submit" variant="contained" color="primary" style={{ marginTop: '15px' }}>
           Create Recipe
         </Button>
       </form>

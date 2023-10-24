@@ -1,10 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { FirebaseAuthContext } from '../FirebaseAuthContext';
+import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import { AppBar, Toolbar, Typography, Button, Box, IconButton, Menu, MenuItem, useScrollTrigger } from '@mui/material';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
-import ThemeToggle from './ThemeToggle';
+import ThemeToggle from '../Theme/ThemeToggle';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { styled } from '@mui/system';
 import { Drawer, List, ListItem, ListItemText } from '@mui/material';

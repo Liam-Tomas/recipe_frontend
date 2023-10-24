@@ -32,12 +32,14 @@
 // create and share your own recipes with friends, and enjoy a seamless recipe search experience.
 
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import AboutCards from '../components/AboutCards'
+import AboutCards from '../components/Cards/AboutCards'
 import { Typography } from '@mui/material';
 import HomePic from '../images/home_image1.svg'
 import HomePic2 from '../images/home_image2.svg'
+import { FirebaseAuthContext } from '../FirebaseAuthContext';
+
 
 const Container = styled.div`
   display: flex;
@@ -52,9 +54,6 @@ const Container = styled.div`
   ;
 `;
 
-const LeftColumn = styled.div`
-
-`;
 
 const Title = styled.h1`
   font-size: 42px;
@@ -66,14 +65,8 @@ const Title = styled.h1`
 const Subtitle = styled.p`
 font-size: 24px;
 font-weight:;
-padding: 0px 0px;
+padding-bottom: 5px;
 
-`;
-
-const RightColumn = styled.div`
-  // display: flex;
-  // align-items: center;
-  // background-color: ;
 `;
 
 const Image = styled.img`
@@ -101,6 +94,7 @@ const GetStartedBtn = styled.div`
 
 const HomePage = () => {
   const recipePhoto = 'https://spoonacular.com/application/frontend/images/food-api/ontology2.svg';
+  const currentUser = useContext(FirebaseAuthContext);
 
   return (
     <div style={{
@@ -109,44 +103,49 @@ const HomePage = () => {
       // backgroundImage: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 60%)',
       // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #625bff 60%, white 100%)',
       // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #ffb05b 60%, white 100%)',
-    
+
     }} >
       <Container>
-        <LeftColumn>
-          <Typography variant="h1" style={{
-            fontSize: '56px',
-            fontWeight: '500'
-          }}>The only recipe app you'll ever need.</Typography>
-          <Subtitle style={{
-          }}>
-          Discover, create and share your favorite recipes with ease.
-          </Subtitle>
+
+        <div>
           {/* <Subtitle>
           This site is a full-stack MERN application, utilizing Node.js,
           Express.js, MongoDB, React.js, React Router, and Material-UI.
           It provides API endpoints for recipe data and user interactions,
           with MongoDB as the database and a modern UI design.
         </Subtitle> */}
-          <Button href="/register" variant="contained" style={{
-            fontSize: '15px',
-            marginRight: '15px'
-          }}>get started</Button>
-          <Button href="/explore" variant="outlined" style={{
-            fontSize: '15px'
-          }}>Explore</Button>
-        </LeftColumn>
-        <RightColumn>
-          <Image src={HomePic} alt="Recipe Image" />
-          <Image2 src={HomePic2} alt="Recipe Image" />
-
-        </RightColumn>
-
+          {currentUser ? (
+            <>
+              <Typography variant="h1" style={{
+                fontSize: '66px',
+                fontWeight: '500',
+              }}>Welcome, {currentUser.email}</Typography>
+              <Subtitle style={{
+              }}>
+                Search, save, and create your own recipes with ease!
+              </Subtitle>
+              <Button href="/explore" variant="contained" style={{ fontSize: '17px', marginRight: '15px' }}>Explore</Button>
+              <Button href="/favorites" variant="contained" style={{ fontSize: '17px', marginRight: '15px' }}>Favorites</Button>
+              <Button href="/myrecipes" variant="contained" style={{ fontSize: '17px' }}>My Recipes</Button>
+            </>
+          ) : (
+            <>
+              <Typography variant="h1" style={{
+                fontSize: '56px',
+                fontWeight: '500'
+              }}>The only recipe app you'll ever need.</Typography>
+              <Subtitle style={{
+              }}>
+                Discover, create and share your favorite recipes with ease.
+              </Subtitle>
+              <Button href="/register" variant="contained" style={{ fontSize: '15px', marginRight: '15px' }}>get started</Button>
+              <Button href="/explore" variant="outlined" style={{ fontSize: '15px' }}>Explore</Button>
+            </>
+          )}
+        </div>
       </Container>
-
       <AboutCards />
-
       <GetStartedBtn>
-
         <Button href="/explore" variant="outlined" style={{
           fontSize: '17px',
         }}>Get Started</Button>

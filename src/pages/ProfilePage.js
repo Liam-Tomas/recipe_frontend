@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EditProfile from '../components/EditProfile';
+import EditProfile from '../components/Profile/EditProfile';
 
 function ProfilePage() {
 

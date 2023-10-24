@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, CardContent, Typography } from '@mui/material';
 import styled from 'styled-components';
-import spoonacularLogo from '../images/spoonacular-logo.svg';
-import mernLogo from '../images/MERN-logo.png';
-import crudLogo from '../images/MERN-logo.png';
-import mongoLogo from '../images/mongodb.svg'
-import materialUILogo from '../images/material-ui.svg';
-import firebaseLogo from '../images/Firebase_Logo.svg';
+import spoonacularLogo from '../../images/spoonacular-logo.svg';
+import mernLogo from '../../images/MERN-logo.png';
+import crudLogo from '../../images/MERN-logo.png';
+import mongoLogo from '../../images/mongodb.svg'
+import materialUILogo from '../../images/material-ui.svg';
+import firebaseLogo from '../../images/Firebase_Logo.svg';
 // import exampleLogo from '../assets/example-logo.png';
 // import mongodbLogo from '../assets/mongodb-logo.png';
 import { useTheme } from '@mui/material/styles';

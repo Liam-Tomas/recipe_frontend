@@ -7,7 +7,7 @@ import CreateRecipeForm from './CreateRecipeForm';
 import { Button, Modal } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
-import { FirebaseAuthContext } from '../FirebaseAuthContext';
+import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -110,7 +110,7 @@ const MyRecipes = () => {
       </Modal>
       <ul style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
+        gridTemplateColumns: 'repeat(3, 1fr)',
         padding: '20px',
         marginBottom: '30px',
         gap: '25px',

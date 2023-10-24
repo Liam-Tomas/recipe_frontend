@@ -5,7 +5,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
-import { FirebaseAuthContext } from '../FirebaseAuthContext';
+import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import EditRecipeForm from './EditRecipeForm';
 import Modal from '@mui/material/Modal';
 
@@ -13,7 +13,6 @@ const StyledRecipe = styled.li`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   // box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
   border-radius:5px;
-  max-width: 350px;
   .card {
     background-color: ${props => props.theme.palette.background.paper};
     display: flex;
@@ -65,7 +64,7 @@ const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
   return (
     <StyledRecipe>
       <CardActionArea style={{
-        height: '280px'
+        height: '300px',
       }}>
         <Link to={sourceUrl} target="_blank" rel="noopener noreferrer">
           <div className="card">
@@ -82,7 +81,9 @@ const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
               }}>
                 {title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary" style={{
+                paddingBottom: '5px'
+              }}>
                 {summary}
               </Typography>
               <Typography variant="body2" color="primary">

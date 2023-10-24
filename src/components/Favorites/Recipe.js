@@ -10,7 +10,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
-import { FirebaseAuthContext } from '../FirebaseAuthContext';
+import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -31,6 +31,12 @@ const StyledRecipe = styled.li`
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     cursor: pointer;
+  }
+
+  .toolbar {
+    background-color: ${props => props.theme.palette.background.paperLight};
+    display: flex;
+    justify-content: space-between
   }
 
   .image-container {
@@ -79,44 +85,44 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
     setShowDialog(!showDialog);
   };
 
-const addRecipeToFavorites = async () => {
+  const addRecipeToFavorites = async () => {
     const userUID = currentUser.uid;
     try {
-        const response = await fetch('http://localhost:3000/recipes/favorites', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-user-uid': userUID,
-            },
-            body: JSON.stringify({
-                recipeId: recipe.id,
-                title: recipe.title,
-                image: recipe.image,
-                servings: recipe.servings,
-                sourceUrl: recipe.sourceUrl,
-                sourceName: recipe.sourceName,
-                readyInMinutes: recipe.readyInMinutes
-            })
-        });
-        if (response.ok) {
-            setIsFavorite(true);
-        } else {
-            console.error('Failed to add favorite');
-        }
+      const response = await fetch('http://localhost:3000/recipes/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-user-uid': userUID,
+        },
+        body: JSON.stringify({
+          recipeId: recipe.id,
+          title: recipe.title,
+          image: recipe.image,
+          servings: recipe.servings,
+          sourceUrl: recipe.sourceUrl,
+          sourceName: recipe.sourceName,
+          readyInMinutes: recipe.readyInMinutes
+        })
+      });
+      if (response.ok) {
+        setIsFavorite(true);
+      } else {
+        console.error('Failed to add favorite');
+      }
     } catch (error) {
-        console.error('Error adding favorite: ', error);
+      console.error('Error adding favorite: ', error);
     }
-};
+  };
 
 
   const handleFavoriteClick = () => {
     if (isFavorite) {
-        toggleDialog();
+      toggleDialog();
     } else {
-        // Add to favorites logic if it's not already a favorite.
-        addRecipeToFavorites();
+      // Add to favorites logic if it's not already a favorite.
+      addRecipeToFavorites();
     }
-};
+  };
 
   const handleRemoveFavorite = async () => {
     try {
@@ -128,7 +134,6 @@ const addRecipeToFavorites = async () => {
       });
       if (response.ok) {
         setIsFavorite(false); // Update the UI to indicate that this recipe is no longer a favorite.
-
         if (showRemove) {
           onRemove && onRemove(recipe.id); // Notify parent component (FavoritesPage) to update its state.
         }
@@ -143,14 +148,17 @@ const addRecipeToFavorites = async () => {
   return (
     <div>
       <StyledRecipe>
-        <CardActionArea style={{ height: '280px' }}>
+        <CardActionArea style={{ height: '280px', }}>
           <Link to={sourceUrl} target="_blank" rel="noopener noreferrer">
             <div className="card">
               <div className="image-container">
                 <CardMedia component="img" image={image} alt={title} />
               </div>
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div" style={{ fontSize: '1.25rem' }}>
+              <CardContent style={{
+                paddingBottom: '18px',
+                paddingTop: '18px',
+              }}>
+                <Typography gutterBottom variant="h25" component="div" style={{ fontSize: '1.25rem' }}>
                   {title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -163,7 +171,7 @@ const addRecipeToFavorites = async () => {
             </div>
           </Link>
         </CardActionArea>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div class= "toolbar">
           <Button href={`/recipes/${recipe.id}`} variant="text" style={{ padding: '8px 15px', fontSize: '.84rem' }}>
             Details
           </Button>
@@ -178,7 +186,6 @@ const addRecipeToFavorites = async () => {
               />
           }
         </div>
-
       </StyledRecipe>
       <Dialog open={showDialog} onClose={toggleDialog}>
         <DialogTitle>Remove Favorite</DialogTitle>
@@ -187,17 +194,17 @@ const addRecipeToFavorites = async () => {
             Are you sure you would like to remove it?
           </DialogContentText>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={async () => {
-            await handleRemoveFavorite(); // This will remove the recipe from favorites
-            toggleDialog();
-          }} color="primary">
-            Remove
-          </Button>
-          <Button onClick={toggleDialog} color="secondary">
-            Cancel
-          </Button>
-        </DialogActions>
+          <DialogActions>
+            <Button onClick={async () => {
+              await handleRemoveFavorite(); // This will remove the recipe from favorites
+              toggleDialog();
+            }} color="primary">
+              Remove
+            </Button>
+            <Button onClick={toggleDialog} color="secondary">
+              Cancel
+            </Button>
+          </DialogActions>
       </Dialog>
 
     </div>

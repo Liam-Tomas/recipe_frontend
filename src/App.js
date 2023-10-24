@@ -2,22 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { FirebaseAuthContext } from './FirebaseAuthContext';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import NavBar from './components/NavBar';
+import NavBar from './components/Layout/NavBar';
 import ExplorePage from './pages/ExplorePage'
 import HomePage from './pages/HomePage'
-import RecipeDetail from './components/RecipeDetail'
+import RecipeDetail from './components/RecipeExplore/RecipeDetail'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import MyRecipePage from './pages/MyRecipePage'
 import FavoritesPage from './pages/FavoritesPage'
 import ProfilePage from './pages/ProfilePage'
-import Footer from './components/Footer';
+import Footer from './components/Layout/Footer';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import usePersistentTheme from './utils/themeUtils'; // import the custom hook
-
-
+import usePersistentTheme from './components/Theme/themeUtils';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -37,7 +35,7 @@ function App() {
   }, [auth]);
 
   if (loading) {
-    return <div></div>; // Or replace with your loading component
+    return <div></div>; // replace with loading component
   }
 
   return (
