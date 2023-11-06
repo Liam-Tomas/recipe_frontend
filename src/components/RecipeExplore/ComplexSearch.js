@@ -99,7 +99,7 @@ const ComplexSearch = () => {
         // Set up API request details
         const options = {
             method: 'GET',
-            url: 'http://localhost:3000/recipes/search',
+            url: `${API_BASE_URL}/recipes/search`,
             params: {
                 query: searchQuery,
                 sort: currentSort,
