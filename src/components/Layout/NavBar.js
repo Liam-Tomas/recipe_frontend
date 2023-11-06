@@ -91,7 +91,7 @@ export default function NavBar({ theme, setTheme }) {
         {currentUser ? (
           <Box>
             <Button component={Link} to="/favorites" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Favorites</Button>
-            <Button component={Link} to="/" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>My Recipes</Button>
+            <Button component={Link} to="/myrecipes" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>My Recipes</Button>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit" style={{
               padding: '0px', marginLeft: '10px'
             }}>

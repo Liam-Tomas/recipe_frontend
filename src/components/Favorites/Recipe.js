@@ -59,7 +59,7 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
 
   const checkIsFavorite = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/recipes/favorites`, {
+      const response = await fetch(`${API_BASE_URL}/recipes/favorites`, {
         headers: {
           'x-user-uid': currentUser.uid,
         }
@@ -134,7 +134,7 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
 
   const handleRemoveFavorite = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/recipes/favorites/${recipe.id}`, {
+      const response = await fetch(`${API_BASE_URL}/recipes/favorites/${recipe.id}`, {
         method: 'DELETE',
         headers: {
           'x-user-uid': currentUser.uid,

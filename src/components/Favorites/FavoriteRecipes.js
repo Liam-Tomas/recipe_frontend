@@ -21,6 +21,7 @@ const Title = styled.h1`
     font-size: 2.6rem;
     font-weight: 500;
     padding-bottom: 40px;
+    font-family: Inter;
 `;
 
 const FavoriteRecipes = () => {

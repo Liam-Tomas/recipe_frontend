@@ -28,8 +28,7 @@ function MyRecipePage() {
   return (
     <MyRecipeContainer >
       <StyledHeaders>
-        <Title>My Recipes
-        </Title>
+        <Title>My Recipes</Title>
       </StyledHeaders>
       <MyRecipe />
     </MyRecipeContainer>
