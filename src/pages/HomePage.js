@@ -40,6 +40,8 @@ import HomePic from '../images/home_image1.svg'
 import HomePic2 from '../images/home_image2.svg'
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
 import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
+
 
 
 const Container = styled.div`
@@ -126,8 +128,8 @@ const HomePage = () => {
               Search, save, and create your own recipes with ease!
             </Subtitle>
             <div>
-              <Button href="/explore" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>Explore</Button>
-              <Button href="/myrecipes" variant="outlined" style={{ fontSize: '16px' }}>My Recipes</Button>
+              <Button component={Link} to="/explore" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>Explore</Button>
+              <Button component={Link} to="/myrecipes" variant="outlined" style={{ fontSize: '16px' }}>My Recipes</Button>
             </div>
           </>
         ) : (
@@ -138,15 +140,15 @@ const HomePage = () => {
               Discover, create and share your favorite recipes with ease.
             </Subtitle>
             <div>
-              <Button href="/register" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>get started</Button>
-              <Button href="/explore" variant="outlined" style={{ fontSize: '16px' }}>Explore</Button>
+              <Button component={Link} to="/register" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>get started</Button>
+              <Button omponent={Link} to="/explore" variant="outlined" style={{ fontSize: '16px' }}>Explore</Button>
             </div>
           </>
         )}
       </Container >
       <AboutCards />
       <GetStartedBtn>
-        <Button href="/explore" variant="outlined" style={{
+        <Button component={Link} to="/register" variant="outlined" style={{
           fontSize: '17px',
         }}>Get Started</Button>
       </GetStartedBtn>

@@ -86,12 +86,12 @@ export default function NavBar({ theme, setTheme }) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: '1.4rem', color: theme.palette.text.primary }}>
           FoodieHub
         </Typography>
-        <NavButton href="/" variant="text" sx={{ color: theme.palette.text.primary }}>About</NavButton>
-        <NavButton href="/explore" variant="text" sx={{ color: theme.palette.text.primary }}>Explore</NavButton>
+        <NavButton component={Link} to="/" variant="text" sx={{ color: theme.palette.text.primary }}>About</NavButton>
+        <NavButton component={Link} to="/explore" variant="text" sx={{ color: theme.palette.text.primary }}>Explore</NavButton>
         {currentUser ? (
           <Box>
-            <Button href="/favorites" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Favorites</Button>
-            <Button href="/myrecipes" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>My Recipes</Button>
+            <Button component={Link} to="/favorites" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Favorites</Button>
+            <Button component={Link} to="/myrecipes" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>My Recipes</Button>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit" style={{
               padding: '0px', marginLeft: '10px'
             }}>
@@ -105,41 +105,40 @@ export default function NavBar({ theme, setTheme }) {
           </Box>
         ) : (
           <>
-            <NavButton href="/login" variant="text" sx={{ marginRight: '10px', color: theme.palette.text.primary }}>Login</NavButton>
-            <NavButton href="/register" variant="contained" sx={{ margin: '0 0px' }}>Sign Up</NavButton>
+            <NavButton component={Link} to="/login" variant="text" sx={{ marginRight: '10px', color: theme.palette.text.primary }}>Login</NavButton>
+            <NavButton component={Link} to="/register" variant="contained" sx={{ margin: '0 0px' }}>Sign Up</NavButton>
           </>
         )}
       </Toolbar>
       <StyledDrawer anchor="left" open={openDrawer} onClose={() => toggleDrawer(false)}>
         <StyledList>
-          <StyledListItem button component={Link} to="/" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/'}
->
+          <StyledListItem component={Link} to="/" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/'}>
             <span>About</span>
           </StyledListItem>
-          <StyledListItem button component={Link} to="/explore" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/explore'} >
+          <StyledListItem component={Link} to="/explore" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/explore'} >
             <span>Explore</span>
           </StyledListItem>
           {currentUser ? (
             <>
-              <StyledListItem button component={Link} to="/favorites" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/favorites'}>
+              <StyledListItem component={Link} to="/favorites" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/favorites'}>
                 <span>Favorites</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/myrecipes" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/myrecipes'}>
+              <StyledListItem component={Link} to="/myrecipes" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/myrecipes'}>
                 <span>My Recipes</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/profile" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/profile'}>
+              <StyledListItem component={Link} to="/profile" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/profile'}>
                 <span>Profile</span>
               </StyledListItem>
-              <StyledListItem button onClick={() => { handleLogout(); toggleDrawer(false);}} >
+              <StyledListItem onClick={() => { handleLogout(); toggleDrawer(false);}} >
                 <span>Logout</span>
               </StyledListItem>
             </>
           ) : (
             <>
-              <StyledListItem button component={Link} to="/login" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/login'}>
+              <StyledListItem component={Link} to="/login" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/login'}>
                 <span>Login</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/register" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/register'}>
+              <StyledListItem component={Link} to="/register" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/register'}>
                 <span>Sign Up</span>
               </StyledListItem>
             </>
