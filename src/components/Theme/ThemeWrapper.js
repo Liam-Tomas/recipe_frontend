@@ -8,11 +8,6 @@ export const lightTheme = createTheme({
                     fontFamily: 'Inter, "Helvetica", "Arial", sans-serif',
                     // You can add additional styles here if needed
                 },
-                h1, h2, h3, h4: {
-                    fontFamily: 'Inter, sans-serif', // Define your header font here
-                    // You can add fontWeight, fontSize, etc., as needed
-                  },
-
                 // ... repeat for h2, h3, etc., if needed
             },
         },
