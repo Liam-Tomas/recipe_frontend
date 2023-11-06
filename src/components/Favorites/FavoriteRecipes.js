@@ -5,21 +5,28 @@ import styled from 'styled-components';
 import { Typography } from '@mui/material';
 
 const StyledHeaders = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0px;
 `;
 
 const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);   
-  gap: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   
+    gap: 25px;
+`;
+
+const Title = styled.h1`
+    font-size: 2.6rem;
+    font-weight: 500;
+    padding-bottom: 40px;
 `;
 
 const FavoriteRecipes = () => {
     const currentUser = useContext(FirebaseAuthContext);
     const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         // Fetch user's favorite recipes when the page loads
@@ -31,7 +38,7 @@ const FavoriteRecipes = () => {
     const fetchUserFavorites = async () => {
         // Make a GET request to fetch user's favorite recipes
         try {
-            const response = await fetch('http://localhost:3000/recipes/favorites', {
+            const response = await fetch(`${API_BASE_URL}/recipes/favorites`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,16 +73,9 @@ const FavoriteRecipes = () => {
             }}
         >
             <StyledHeaders>
-                <Typography
-                    variant="h4"
-                    style={{
-                        fontSize: '2.3rem',
-                        fontWeight: '500',
-                        paddingBottom: '40px',
-                    }}
-                >
+                <Title>
                     Favorites
-                </Typography>
+                </Title>
             </StyledHeaders>
 
             <GridContainer>
@@ -83,14 +83,13 @@ const FavoriteRecipes = () => {
                     <Recipe
                         key={favorite.recipeId}
                         recipe={{
-                            id: favorite.recipeId, // Ensure this line exists and is correct
+                            id: favorite.recipeId, 
                             title: favorite.title,
                             image: favorite.image,
                             servings: favorite.servings,
                             sourceUrl: favorite.sourceUrl, 
                             sourceName: favorite.sourceName,
                             readyInMinutes: favorite.readyInMinutes,
-                            // Include other properties as needed
                         }}
                         showRemove={true} // set the showRemove prop to true
                         onRemove={handleFavoriteRemoved}

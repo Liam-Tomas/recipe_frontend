@@ -6,21 +6,31 @@ import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 const FormContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    max-width: 400px;
-    min-height:94vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  max-width: 400px;
+  min-height:94vh;
 `;
 
 const StyledForm = styled.form`
-    background-color: ${(props) => props.theme.palette.background.paper};
-    box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
-    padding: 90px;
-    border-radius: 10px;
+  background-color: ${(props) => props.theme.palette.background.paper};
+  box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
+  padding: 90px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+`
+
+const Title = styled.h1`
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 25px;
 `
 
 const Login = () => {
@@ -44,13 +54,9 @@ const Login = () => {
   };
 
   return (
-    <FormContainer style={{
-    }}>
+    <FormContainer>
       <StyledForm onSubmit={handleLogin}>
-        <h1 style={{
-          fontSize: '1.8rem',
-          marginBottom: '25px'
-        }}>Login</h1>
+        <Title >Login</Title>
         <TextField
           helperText="Please enter your email"
           id="email"
@@ -76,18 +82,18 @@ const Login = () => {
             marginBottom: '10px'
           }}
         />
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          style={{ marginTop: '10px' }}
-        >
-          Log In
-        </Button>
+        <div>
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            style={{ marginTop: '10px' }}
+          >
+            Log In
+          </Button>
+        </div>
         {message && <Typography variant="subtitle1" style={{
           color: theme.palette.primary.main,
-          fontSize: '1.2rem',
-          marginTop: '30px',
         }}>{message}</Typography>}
       </StyledForm>
     </FormContainer >

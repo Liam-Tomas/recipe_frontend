@@ -29,7 +29,6 @@ function App() {
       console.log("User from Firebase:", user);
       setLoading(false);
     });
-
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [auth]);

@@ -3,7 +3,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Button, CardActionArea } from '@mui/material';
-import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
@@ -55,6 +54,8 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [showDialog, setShowDialog] = useState(false);
   const currentUser = useContext(FirebaseAuthContext);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
   const checkIsFavorite = async () => {
     try {
@@ -88,7 +89,7 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
   const addRecipeToFavorites = async () => {
     const userUID = currentUser.uid;
     try {
-      const response = await fetch('http://localhost:3000/recipes/favorites', {
+      const response = await fetch(`${API_BASE_URL}/recipes/favorites`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -116,6 +117,13 @@ const Recipe = ({ recipe, showRemove, onRemove }) => {
 
 
   const handleFavoriteClick = () => {
+    if (!currentUser) {
+      alert("You must log in or sign up to favorite a recipe.");
+      // Optionally redirect the user to the login/signup page here
+      // For example:
+      // window.location.href = '/login';
+      return;
+  }
     if (isFavorite) {
       toggleDialog();
     } else {

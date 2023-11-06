@@ -8,6 +8,8 @@ import CardMedia from '@mui/material/CardMedia';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import EditRecipeForm from './EditRecipeForm';
 import Modal from '@mui/material/Modal';
+import { useTheme } from '@mui/material/styles';
+
 
 const StyledRecipe = styled.li`
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -46,7 +48,7 @@ const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
   const currentUser = useContext(FirebaseAuthContext);
   const [open, setOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-
+  const theme = useTheme();
 
   const handleOpen = () => {
     setOpen(true);
@@ -59,7 +61,6 @@ const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
   const removeRecipe = () => {
     onRemove(recipe._id); // Call the passed down function with the recipe ID
   };
-
 
   return (
     <StyledRecipe>
@@ -96,7 +97,8 @@ const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
       </CardActionArea>
       <div style={{
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: theme.palette.background.paperLight,
       }}>
         <Button onClick={() => {
           setSelectedRecipe(recipe);  // Set the selected recipe

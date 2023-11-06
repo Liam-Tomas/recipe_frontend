@@ -16,16 +16,20 @@ const MyRecipeContainer = styled.div`
   margin: 0px 55px;
 `
 
+const Title = styled.h1`
+  font-size: 2.6rem;
+  font-weight: 600;
+  font-family: Inter;
+  margin-bottom: 10px;
+`
+
 function MyRecipePage() {
 
   return (
     <MyRecipeContainer >
       <StyledHeaders>
-        <Typography variant="h4" style={{
-          fontSize: '2.3rem',
-          fontWeight: '500',
-        }}>My Recipes
-        </Typography>
+        <Title>My Recipes
+        </Title>
       </StyledHeaders>
       <MyRecipe />
     </MyRecipeContainer>

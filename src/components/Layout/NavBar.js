@@ -20,12 +20,18 @@ const StyledList = styled(List)`
 
 const StyledListItem = styled(ListItem)`
   color: ${(props) => props.theme.palette.text.main};
-
+font-family: Inter;
   span {
     font-size: 2rem;
-    padding: 10px;
+    padding: 15px;
     color: ${(props) => (props.isActive ? props.theme.palette.primary.main : 'inherit')};
     font-weight: ${(props) => (props.isActive ? '500' : 'inherit')};
+  }
+`;
+
+const NavButton = styled(Button)`
+  &:not(:last-child) {
+    margin-right: 16px; // or whatever spacing you prefer
   }
 `;
 
@@ -80,8 +86,8 @@ export default function NavBar({ theme, setTheme }) {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: '1.4rem', color: theme.palette.text.primary }}>
           FoodieHub
         </Typography>
-        <Button href="/" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>About</Button>
-        <Button href="/explore" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Explore</Button>
+        <NavButton href="/" variant="text" sx={{ color: theme.palette.text.primary }}>About</NavButton>
+        <NavButton href="/explore" variant="text" sx={{ color: theme.palette.text.primary }}>Explore</NavButton>
         {currentUser ? (
           <Box>
             <Button href="/favorites" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Favorites</Button>
@@ -99,8 +105,8 @@ export default function NavBar({ theme, setTheme }) {
           </Box>
         ) : (
           <>
-            <Button href="/login" variant="text" sx={{ marginRight: '10px', color: theme.palette.text.primary }}>Login</Button>
-            <Button href="/register" variant="contained" sx={{ margin: '0 0px' }}>Sign Up</Button>
+            <NavButton href="/login" variant="text" sx={{ marginRight: '10px', color: theme.palette.text.primary }}>Login</NavButton>
+            <NavButton href="/register" variant="contained" sx={{ margin: '0 0px' }}>Sign Up</NavButton>
           </>
         )}
       </Toolbar>

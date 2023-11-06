@@ -10,7 +10,13 @@ import InputLabel from '@mui/material/InputLabel';
 import styled from 'styled-components';
 
 const GridContainer = styled.div`
-
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    listStyle: 'none',
+    padding: '20px',
+    marginTop: '30px',
+    marginBottom: '30px',
+    gap: '25px',
 `;
 
 // Options for sorting, diet, and type selection
@@ -20,6 +26,10 @@ const TYPE_OPTIONS = ['none', 'main course', 'breakfast', 'appetizer', 'salad', 
 
 // Constant for number of results to show per page
 const RESULTS_PER_PAGE = 10;
+
+// API B
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
 const ComplexSearch = () => {
     // State hooks for various pieces of data and UI states
@@ -226,7 +236,7 @@ const ComplexSearch = () => {
                 <Button
                     variant="outlined"
                     color="primary"
-                    onClick={() => performSearch()}  // No need to pass query here; it will default to current state
+                    onClick={() => performSearch()}  // No need to pass query; it will default to current state
                     style={{ marginTop: '10px', marginLeft: '15px' }}
                 >
                     Search

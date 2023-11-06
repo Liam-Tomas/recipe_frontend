@@ -90,12 +90,14 @@ function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 
   useEffect(() => {
     const fetchRecipe = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:3000/recipes/${id}/information`);
+        const response = await axios.get(`${API_BASE_URL}/recipes/${id}/information`);
         setRecipe(response.data);
       } catch (error) {
         console.error(error);

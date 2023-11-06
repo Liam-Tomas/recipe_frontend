@@ -39,35 +39,38 @@ import { Typography } from '@mui/material';
 import HomePic from '../images/home_image1.svg'
 import HomePic2 from '../images/home_image2.svg'
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
+import { useTheme } from '@mui/material/styles';
 
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+  align-items:center;
+  // text-align: center;
   justify-content: center;
-  text-align: center;
   flex-direction: column;
   height: 85vh;
-  padding: 0px 60px;
+  padding: 0px 30px;
+  gap: 15px;
   // backgroundImage: 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)',
   // background-image: linear-gradient(to bottom, #dfe9f3 0%, white 100%);
   ;
 `;
 
 
-const Title = styled.h1`
-  font-size: 42px;
-  font-weight: 500;
-  margin-bottom: 5px;
+const Title = styled.div`
+font-size: 1.95rem;
+font-weight: 500;
+// font-family: 'Inter';
+color: ${(props) => props.theme.palette.primary.main};
 
 `;
 
-const Subtitle = styled.p`
-font-size: 24px;
-font-weight:;
-padding-bottom: 5px;
-
-`;
+const Subtitle = styled.div`
+  font-size: 1.5rem;
+  font-family: 'Inter';
+  margin-bottom: 15px;
+  color: ${(props) => props.theme.palette.text.secondary};
+  `;
 
 const Image = styled.img`
   max-width:0%;
@@ -82,7 +85,6 @@ const Image2 = styled.img`
   top: 300px;
   right: 8%;
   position: absolute;
-  z-index: -10;
 `;
 
 const GetStartedBtn = styled.div`
@@ -92,67 +94,63 @@ const GetStartedBtn = styled.div`
   padding:180px;
   `
 
+const MainTitle = styled.div`
+  font-size: 3.9rem;
+  font-weight: 700;
+  font-family: 'Inter';
+`
+
+const ColoredTitle = styled.span`
+  color: ${(props) => props.theme.palette.primary.main};
+
+`
+
 const HomePage = () => {
   const recipePhoto = 'https://spoonacular.com/application/frontend/images/food-api/ontology2.svg';
   const currentUser = useContext(FirebaseAuthContext);
+  const theme = useTheme();
 
   return (
-    <div style={{
-      // backgroundImage: 'linear-gradient(to top, #f5f7fa 0%, #dfe9f3 60%, white 100%)',
-      // backgroundImage: 'linear-gradient(to top, #f3e7e9 60%, #e3eeff 99%, #e3eeff 70%)',
-      // backgroundImage: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 60%)',
-      // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #625bff 60%, white 100%)',
-      // backgroundImage: 'linear-gradient(to bottom, #f5f7fa 0%, #ffb05b 60%, white 100%)',
-
-    }} >
+    <div>
       <Container>
-
-        <div>
-          {/* <Subtitle>
+        {/* <Subtitle>
           This site is a full-stack MERN application, utilizing Node.js,
           Express.js, MongoDB, React.js, React Router, and Material-UI.
           It provides API endpoints for recipe data and user interactions,
           with MongoDB as the database and a modern UI design.
         </Subtitle> */}
-          {currentUser ? (
-            <>
-              <Typography variant="h1" style={{
-                fontSize: '66px',
-                fontWeight: '500',
-              }}>Welcome, {currentUser.email}</Typography>
-              <Subtitle style={{
-              }}>
-                Search, save, and create your own recipes with ease!
-              </Subtitle>
-              <Button href="/explore" variant="contained" style={{ fontSize: '17px', marginRight: '15px' }}>Explore</Button>
-              <Button href="/favorites" variant="contained" style={{ fontSize: '17px', marginRight: '15px' }}>Favorites</Button>
-              <Button href="/myrecipes" variant="contained" style={{ fontSize: '17px' }}>My Recipes</Button>
-            </>
-          ) : (
-            <>
-              <Typography variant="h1" style={{
-                fontSize: '56px',
-                fontWeight: '500'
-              }}>The only recipe app you'll ever need.</Typography>
-              <Subtitle style={{
-              }}>
-                Discover, create and share your favorite recipes with ease.
-              </Subtitle>
-              <Button href="/register" variant="contained" style={{ fontSize: '15px', marginRight: '15px' }}>get started</Button>
-              <Button href="/explore" variant="outlined" style={{ fontSize: '15px' }}>Explore</Button>
-            </>
-          )}
-        </div>
-      </Container>
+        {currentUser ? (
+          <>
+            <MainTitle>Welcome, <ColoredTitle>{currentUser.email}</ColoredTitle></MainTitle>
+            <Subtitle>
+              Search, save, and create your own recipes with ease!
+            </Subtitle>
+            <div>
+              <Button href="/explore" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>Explore</Button>
+              <Button href="/myrecipes" variant="outlined" style={{ fontSize: '16px' }}>My Recipes</Button>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* <Title>Welcome to Foodhub! </Title> */}
+            <MainTitle variant="h1">Your Personal <ColoredTitle>Recipe Manager</ColoredTitle></MainTitle>
+            <Subtitle>
+              Discover, create and share your favorite recipes with ease.
+            </Subtitle>
+            <div>
+              <Button href="/register" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>get started</Button>
+              <Button href="/explore" variant="outlined" style={{ fontSize: '16px' }}>Explore</Button>
+            </div>
+          </>
+        )}
+      </Container >
       <AboutCards />
       <GetStartedBtn>
         <Button href="/explore" variant="outlined" style={{
           fontSize: '17px',
         }}>Get Started</Button>
       </GetStartedBtn>
-
-    </div>
-
+    </div >
   );
 };
 

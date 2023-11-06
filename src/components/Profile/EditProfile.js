@@ -11,8 +11,7 @@ const Centered = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  background-color: background.primary;
-
+  text-align: center;
   .centered-form {
     display: flex;
     color: red;
@@ -21,6 +20,20 @@ const Centered = styled.div`
     width: 18rem;
   }
 `;
+
+const Title = styled.h1`
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin-bottom:2rem;
+
+`
+
+const Container = styled.div`
+    background-color: ${(props) => props.theme.palette.background.paper};
+    box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
+    padding: 90px;
+    border-radius: 5px;
+`
 
 function EditProfile() {
     const [newEmail, setNewEmail] = useState('');
@@ -73,57 +86,60 @@ function EditProfile() {
 
     return (
         <Centered >
-            <h2>Change Password</h2>
-            <div class="centered-form">
-                <TextField
-                    label="Email"
-                    value={newEmail}
-                    onChange={(e) => setNewEmail(e.target.value)}
-                />
-                <TextField
-                    label="New Password"
-                    type="password"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
-                />
-
-                <Button variant="contained" onClick={openDialog}>Update</Button>
-            </div>
-
-            <Dialog open={isDialogOpen} onClose={closeDialog}>
-                <DialogTitle>Re-authenticate</DialogTitle>
-                <DialogContent style={{
-                    paddingTop:"10px"
-                }}>
+            <Container>
+                <Title>Change Password</Title>
+                <div class="centered-form">
                     <TextField
-                        label="Current Email"
-                        value={reauthEmail}
-                        onChange={(e) => setReauthEmail(e.target.value)}
+                        label="Email"
+                        value={newEmail}
+                        onChange={(e) => setNewEmail(e.target.value)}
                     />
                     <TextField
-                        label="Current Password"
+                        label="New Password"
                         type="password"
-                        value={reauthPassword}
-                        onChange={(e) => setReauthPassword(e.target.value)}
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
                     />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={closeDialog} color="secondary">Cancel</Button>
-                    <Button onClick={handleUpdate} color="primary">Confirm</Button>
-                </DialogActions>
-            </Dialog>
-            <Dialog
-                open={successDialogOpen}
-                onClose={handleCloseSuccessDialog}
-            >
-                <DialogTitle>Update Successful</DialogTitle>
-                <DialogActions>
-                    <Button onClick={handleCloseSuccessDialog} color="primary">
-                        OK
-                    </Button>
-                </DialogActions>
-            </Dialog>
+
+                    <Button variant="contained" onClick={openDialog}>Update</Button>
+                </div>
+
+                <Dialog open={isDialogOpen} onClose={closeDialog}>
+                    <DialogTitle>Re-authenticate</DialogTitle>
+                    <DialogContent style={{
+                        paddingTop: "10px"
+                    }}>
+                        <TextField
+                            label="Current Email"
+                            value={reauthEmail}
+                            onChange={(e) => setReauthEmail(e.target.value)}
+                        />
+                        <TextField
+                            label="Current Password"
+                            type="password"
+                            value={reauthPassword}
+                            onChange={(e) => setReauthPassword(e.target.value)}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={closeDialog} color="secondary">Cancel</Button>
+                        <Button onClick={handleUpdate} color="primary">Confirm</Button>
+                    </DialogActions>
+                </Dialog>
+                <Dialog
+                    open={successDialogOpen}
+                    onClose={handleCloseSuccessDialog}
+                >
+                    <DialogTitle>Update Successful</DialogTitle>
+                    <DialogActions>
+                        <Button onClick={handleCloseSuccessDialog} color="primary">
+                            OK
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Container>
         </Centered>
+
     );
 }
 

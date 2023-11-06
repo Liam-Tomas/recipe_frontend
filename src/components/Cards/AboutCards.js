@@ -17,6 +17,7 @@ const CardGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   padding: 20px 130px;
+
 `;
 
 const StyledCard = styled.div`
@@ -68,7 +69,6 @@ const TechnicalCards = () => {
                 'For user authentication, the app integrates with Firebase authentication to provide a secure and reliable login/signup process, ensuring that user data and interactions are protected.',
             logo: firebaseLogo,
         },
-        // Add more technical aspects here
         {
             title: 'Full CRUD Capabilities',
             description: 'Empowered by the MERN stack, my application has comprehensive CRUD (Create, Read, Update, Delete) operations. This gives users  full control over their recipes and data.',

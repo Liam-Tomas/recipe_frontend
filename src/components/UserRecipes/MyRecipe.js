@@ -8,16 +8,18 @@ import { Button, Modal } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const currentUser = useContext(FirebaseAuthContext);
-  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   useEffect(() => {
     const fetchMyRecipes = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/recipes/myrecipes?userUID=${currentUser.uid}`);
+        const response = await axios.get(`${API_BASE_URL}/recipes/myrecipes?userUID=${currentUser.uid}`);
 
         if (response.data && response.data.recipes) {
           setRecipes(response.data.recipes);
@@ -31,7 +33,7 @@ const MyRecipes = () => {
 
   const handleNewRecipe = async (newRecipe) => {
     try {
-      const response = await axios.post('http://localhost:3000/recipes/myrecipes', {
+      const response = await axios.post(`${API_BASE_URL}/recipes/myrecipes`, {
         ...newRecipe,
         userUID: currentUser.uid,
       });
@@ -44,7 +46,7 @@ const MyRecipes = () => {
 
   const handleRemoveRecipe = async (recipeId) => {
     try {
-      const response = await axios.delete(`http://localhost:3000/recipes/myrecipes/${recipeId}`, {
+      const response = await axios.delete(`${API_BASE_URL}/recipes/myrecipes/${recipeId}`, {
         data: { userUID: currentUser.uid }
       });
       if (response.status === 200) {
@@ -59,7 +61,7 @@ const MyRecipes = () => {
     console.log("Editing recipe with ID:", recipeId);
 
     try {
-      const response = await axios.put(`http://localhost:3000/recipes/myrecipes/edit/${recipeId}`, {
+      const response = await axios.put(`${API_BASE_URL}/recipes/myrecipes/edit/${recipeId}`, {
         ...updatedRecipe,
         userUID: currentUser.uid,
         
@@ -129,5 +131,3 @@ const MyRecipes = () => {
 };
 
 export default MyRecipes;
-
-

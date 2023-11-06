@@ -24,7 +24,6 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
 
   const [recipeData, setRecipeData] = useState(INITIAL_RECIPE_STATE);
 
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const fieldValue = type === 'checkbox' ? checked : value;
