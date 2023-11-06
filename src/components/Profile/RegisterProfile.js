@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { TextField, Button, Typography } from '@mui/material';
 import styled from 'styled-components';
 import { useTheme } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const StyledForm = styled.div`
   display: flex;
@@ -45,7 +46,8 @@ const RegisterProfile = () => {
       }}>
         <h1 style={{
           fontSize: '1.8rem',
-          marginBottom: '25px'
+          marginBottom: '25px',
+          fontWeight: '500',
         }}>Sign Up</h1>
         <TextField
           helperText="Please enter your email"
@@ -88,7 +90,7 @@ const RegisterProfile = () => {
           color: theme.palette.text.secondary,
           fontSize: '1rem',
           marginTop: '30px',
-        }}>Already have an account? <Button href="/login" variant="text" sx={{
+        }}>Already have an account? <Button component={Link} to="/login" variant="text" sx={{
           marginRight: '10px',
         }}>Login</Button></Typography>
       </form>

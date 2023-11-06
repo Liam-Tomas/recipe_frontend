@@ -141,7 +141,7 @@ const HomePage = () => {
             </Subtitle>
             <div>
               <Button component={Link} to="/register" variant="contained" style={{ fontSize: '16px', marginRight: '15px' }}>get started</Button>
-              <Button omponent={Link} to="/explore" variant="outlined" style={{ fontSize: '16px' }}>Explore</Button>
+              <Button component={Link} to="/explore" variant="outlined" style={{ fontSize: '16px' }}>Explore</Button>
             </div>
           </>
         )}
