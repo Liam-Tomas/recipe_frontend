@@ -8,24 +8,28 @@ import { Button, Modal } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import { CircularProgress } from '@mui/material'; // Import CircularProgress
+
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const currentUser = useContext(FirebaseAuthContext);
+  const [loading, setLoading] = useState(false);
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchMyRecipes = async () => {
+      setLoading(true); // Set loading to true when the fetch starts
       try {
         const response = await axios.get(`${API_BASE_URL}/recipes/myrecipes?userUID=${currentUser.uid}`);
-
         if (response.data && response.data.recipes) {
           setRecipes(response.data.recipes);
         }
       } catch (error) {
         console.error('Error fetching my recipes: ', error);
+      } finally {
+        setLoading(false); // Set loading to false when the fetch completes
       }
     };
     fetchMyRecipes();
@@ -64,7 +68,7 @@ const MyRecipes = () => {
       const response = await axios.put(`${API_BASE_URL}/recipes/myrecipes/edit/${recipeId}`, {
         ...updatedRecipe,
         userUID: currentUser.uid,
-        
+
       });
 
       // Update recipes state with the updated recipe data
@@ -83,7 +87,7 @@ const MyRecipes = () => {
       console.error(error);
     }
   };
-  
+
 
   return (
     <div>
@@ -110,22 +114,35 @@ const MyRecipes = () => {
           <CreateRecipeForm onNewRecipe={handleNewRecipe} />
         </div>
       </Modal>
-      <ul style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        padding: '20px',
-        marginBottom: '30px',
-        gap: '25px',
-      }}>
-        {recipes.map((recipe) => (
-          <MyRecipeCard
-            key={recipe._id}
-            recipe={recipe}
-            onRemove={handleRemoveRecipe}
-            onEdit={handleEditRecipe} // pass the function
-          />
-        ))}
-      </ul>
+      {loading ? (
+        // If loading is true, display the CircularProgress component
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '40vh'
+        }}>
+          <CircularProgress />
+        </div>
+      ) : (
+        <ul style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+          padding: '20px',
+          marginBottom: '30px',
+          gap: '25px',
+        }}>
+          {recipes.map((recipe) => (
+            <MyRecipeCard
+              key={recipe._id}
+              recipe={recipe}
+              onRemove={handleRemoveRecipe}
+              onEdit={handleEditRecipe} // pass the function
+            />
+          ))}
+        </ul>
+      )}
+
     </div>
   );
 };

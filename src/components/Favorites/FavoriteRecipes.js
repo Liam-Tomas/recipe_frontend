@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Recipe from './Recipe';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import styled from 'styled-components';
-import { Typography } from '@mui/material';
+import { CircularProgress } from '@mui/material'; // Import CircularProgress
 
 const StyledHeaders = styled.div`
     display: flex;
@@ -19,19 +19,21 @@ const GridContainer = styled.div`
 
 const Title = styled.h1`
     font-size: 2.6rem;
-    font-weight: 500;
-    padding-bottom: 40px;
+    font-weight: 600;
+    margin-bottom: 30px;
     font-family: Inter;
 `;
 
 const FavoriteRecipes = () => {
     const currentUser = useContext(FirebaseAuthContext);
     const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+    const [loading, setLoading] = useState(false); //  loading state
     const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         // Fetch user's favorite recipes when the page loads
         if (currentUser) {
+            setLoading(true); // Start loading
             fetchUserFavorites(currentUser.uid);
         }
     }, [currentUser]);
@@ -54,6 +56,8 @@ const FavoriteRecipes = () => {
             }
         } catch (error) {
             console.error('Error fetching user favorites:', error);
+        } finally {
+            setLoading(false); // Stop loading regardless of the outcome
         }
     };
 
@@ -78,26 +82,30 @@ const FavoriteRecipes = () => {
                     Favorites
                 </Title>
             </StyledHeaders>
-
-            <GridContainer>
-                {favoriteRecipes.map((favorite) => (
-                    <Recipe
-                        key={favorite.recipeId}
-                        recipe={{
-                            id: favorite.recipeId, 
-                            title: favorite.title,
-                            image: favorite.image,
-                            servings: favorite.servings,
-                            sourceUrl: favorite.sourceUrl, 
-                            sourceName: favorite.sourceName,
-                            readyInMinutes: favorite.readyInMinutes,
-                        }}
-                        showRemove={true} // set the showRemove prop to true
-                        onRemove={handleFavoriteRemoved}
-                    />
-                ))}
-            </GridContainer>
-
+            {loading ? (
+                <div style={{ display: 'flex', justifyContent: 'center', minHeight: '40vh', alignItems: 'center' }}>
+                    <CircularProgress />
+                </div>
+            ) : (
+                <GridContainer>
+                    {favoriteRecipes.map((favorite) => (
+                        <Recipe
+                            key={favorite.recipeId}
+                            recipe={{
+                                id: favorite.recipeId,
+                                title: favorite.title,
+                                image: favorite.image,
+                                servings: favorite.servings,
+                                sourceUrl: favorite.sourceUrl,
+                                sourceName: favorite.sourceName,
+                                readyInMinutes: favorite.readyInMinutes,
+                            }}
+                            showRemove={true} // set the showRemove prop to true
+                            onRemove={handleFavoriteRemoved}
+                        />
+                    ))}
+                </GridContainer>
+            )}
         </section>
     );
 };

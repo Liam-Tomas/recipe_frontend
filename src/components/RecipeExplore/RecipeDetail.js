@@ -115,9 +115,9 @@ function RecipeDetail() {
 
   if (loading) {
     return (
-      <Container>
+      <div style={{ display: 'flex', justifyContent: 'center', minHeight: '90vh', alignItems: 'center' }}>
         <CircularProgress fontSize='2rem' />
-      </Container>
+      </div>
     );
   }
 

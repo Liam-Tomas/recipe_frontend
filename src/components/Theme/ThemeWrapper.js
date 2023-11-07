@@ -50,7 +50,6 @@ export const lightTheme = createTheme({
             disabled: 'rgba(0, 0, 0, 0.38)',
         },
     },
-
    
 });
 

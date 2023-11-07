@@ -121,9 +121,11 @@ const ComplexSearch = () => {
             sessionStorage.setItem('type', type);
         } catch (error) {
             console.error(error);
+        } finally {
+            // Indicate the end of an API call regardless of the outcome
+            setLoading(false);
         }
-        // Indicate the end of an API call
-        setLoading(false);
+        // setLoading(false);
     };
 
     // Functions for navigating through paginated results
