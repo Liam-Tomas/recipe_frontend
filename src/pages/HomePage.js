@@ -67,6 +67,10 @@ const Subtitle = styled.div`
   font-family: 'Inter';
   margin-bottom: 15px;
   color: ${(props) => props.theme.palette.text.secondary};
+
+  @media (max-width: 750px) {
+    font-size: 1.5rem;
+  }
   `;
 
 const GetStartedBtn = styled.div`
@@ -88,7 +92,7 @@ const MainTitle = styled.div`
   font-family: 'Inter';
 
   @media (max-width: 750px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `
 

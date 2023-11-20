@@ -16,6 +16,20 @@ const StyledForm = styled.div`
   min-height:94vh;
 `;
 
+const RegisterForm = styled.div`
+  background-color: ${(props) => props.theme.palette.background.paper};
+  box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
+  padding: 90px 90px;
+  border-radius: 10px;
+
+  @media (max-width: 750px) {
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+`;
+
+
 const RegisterProfile = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,12 +52,7 @@ const RegisterProfile = () => {
 
   return (
     <StyledForm>
-      <form onSubmit={handleRegister} style={{
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: 'rgba(33, 35, 39, 0.08) 0px 8px 24px',
-        padding: '90px 90px',
-        borderRadius: '10px'
-      }}>
+      <RegisterForm onSubmit={handleRegister} >
         <h1 style={{
           fontSize: '1.8rem',
           marginBottom: '25px',
@@ -93,7 +102,7 @@ const RegisterProfile = () => {
         }}>Already have an account? <Button component={Link} to="/login" variant="text" sx={{
           marginRight: '10px',
         }}>Login</Button></Typography>
-      </form>
+      </RegisterForm>
     </StyledForm>
   );
 };

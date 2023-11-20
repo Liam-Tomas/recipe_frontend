@@ -33,6 +33,10 @@ const Container = styled.div`
     box-shadow: rgba(33, 35, 39, 0.08) 0px 8px 24px;
     padding: 90px;
     border-radius: 5px;
+
+    @media (max-width: 750px) {
+        background-color: none;
+    }
 `
 
 function EditProfile() {

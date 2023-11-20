@@ -11,9 +11,16 @@ const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: auto;
-  max-width: 400px;
   min-height:94vh;
+
+  @media (max-width: 750px) {
+    min-height: 90vh;
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+}
 `;
 
 const StyledForm = styled.form`
@@ -25,7 +32,12 @@ const StyledForm = styled.form`
   flex-direction: column;
   gap: 5px;
 
-`
+  @media (max-width: 750px) {
+    padding: 20px;
+    background-color: transparent;
+    box-shadow: none;
+  }
+`;
 
 const Title = styled.h1`
   font-size: 1.7rem;
