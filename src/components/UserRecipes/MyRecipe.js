@@ -120,7 +120,7 @@ const MyRecipes = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '40vh'
+          minHeight: '40vh',
         }}>
           <CircularProgress />
         </div>

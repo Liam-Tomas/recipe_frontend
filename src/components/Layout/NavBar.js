@@ -9,18 +9,20 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { styled } from '@mui/system';
 import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 
-
+const StyledAppBar = styled(AppBar)`
+  background-color:  ${(props) => props.theme.palette.background.default};
+  padding: 5px 55px;
+`
 const StyledDrawer = styled(Drawer)`
-  color: /* your desired text color */;
 `;
 
 const StyledList = styled(List)`
   width: 400px;
+
 `;
 
 const StyledListItem = styled(ListItem)`
-  color: ${(props) => props.theme.palette.text.main};
-font-family: Inter;
+  font-family: Inter;
   span {
     font-size: 2rem;
     padding: 15px;
@@ -30,10 +32,18 @@ font-family: Inter;
 `;
 
 const NavButton = styled(Button)`
-  &:not(:last-child) {
-    margin-right: 16px; // or whatever spacing you prefer
-  }
+margin-right: 18px;
+color: ${(props) => props.theme.palette.text.primary};
+
+
 `;
+
+const Logo = styled(Typography)`
+  flex-grow: 1; 
+  font-size: 1.4rem;
+  color: ${(props) => props.theme.palette.text.primary};
+
+  `
 
 
 export default function NavBar({ theme, setTheme }) {
@@ -77,24 +87,22 @@ export default function NavBar({ theme, setTheme }) {
   }, []);
 
   return (
-    <AppBar position="fixed" elevation={elevated ? 4 : 0} style={{ backgroundColor: theme.palette.background.default, padding: '5px 55px' }}>
+    <StyledAppBar position="fixed" elevation={elevated ? 4 : 0}>
       <Toolbar>
         <IconButton size="large" aria-label="open drawer" edge="start" onClick={() => toggleDrawer(true)} color="inherit">
           <AiOutlineMenu style={{ color: theme.palette.text.secondary, fontSize: '2rem' }} />
         </IconButton>
         <ThemeToggle theme={theme} setTheme={setTheme} />
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: '1.4rem', color: theme.palette.text.primary }}>
+        <Logo variant="h6" component="div" >
           FoodieHub
-        </Typography>
-        <NavButton component={Link} to="/" variant="text" sx={{ color: theme.palette.text.primary }}>About</NavButton>
-        <NavButton component={Link} to="/explore" variant="text" sx={{ color: theme.palette.text.primary }}>Explore</NavButton>
+        </Logo>
+        <NavButton component={Link} to="/" variant="text">About</NavButton>
+        <NavButton component={Link} to="/explore" variant="text">Explore</NavButton>
         {currentUser ? (
           <Box>
-            <Button component={Link} to="/favorites" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>Favorites</Button>
-            <Button component={Link} to="/myrecipes" variant="text" sx={{ margin: '0 8px', color: theme.palette.text.primary }}>My Recipes</Button>
-            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit" style={{
-              padding: '0px', marginLeft: '10px'
-            }}>
+            <NavButton component={Link} to="/favorites" variant="text">Favorites</NavButton>
+            <NavButton component={Link} to="/" variant="text">My Recipes</NavButton>
+            <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
               <AccountCircleIcon style={{ color: theme.palette.primary.main, fontSize: '3rem' }} />
             </IconButton>
             <Menu id="menu-appbar" anchorEl={anchorEl} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -105,8 +113,8 @@ export default function NavBar({ theme, setTheme }) {
           </Box>
         ) : (
           <>
-            <NavButton component={Link} to="/login" variant="text" sx={{ marginRight: '10px', color: theme.palette.text.primary }}>Login</NavButton>
-            <NavButton component={Link} to="/register" variant="contained" sx={{ margin: '0 0px' }}>Sign Up</NavButton>
+            <NavButton component={Link} to="/login" variant="text" sx={{}}>Login</NavButton>
+            <Button component={Link} to="/register" variant="contained" sx={{}}>Sign Up</Button>
           </>
         )}
       </Toolbar>
@@ -129,7 +137,7 @@ export default function NavBar({ theme, setTheme }) {
               <StyledListItem button component={Link} to="/profile" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/profile'}>
                 <span>Profile</span>
               </StyledListItem>
-              <StyledListItem button onClick={() => { handleLogout(); toggleDrawer(false);}} >
+              <StyledListItem button onClick={() => { handleLogout(); toggleDrawer(false); }} >
                 <span>Logout</span>
               </StyledListItem>
             </>
@@ -145,7 +153,7 @@ export default function NavBar({ theme, setTheme }) {
           )}
         </StyledList>
       </StyledDrawer>
-    </AppBar>
+    </StyledAppBar>
   );
 }
 

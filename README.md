@@ -1,75 +1,44 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# Recipe Manager Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
+Recipe Manager is a React-based web application designed to provide users with an interactive platform for discovering, managing, and saving their favorite recipes. It integrates Firebase for user authentication and utilizes a variety of React components for a dynamic user experience.
 
-## Available Scripts
+## Application Structure
 
-In the project directory, you can run:
+### Core Functionality
+- **App.js:** Serves as the entry point of the application, setting up routing with React Router and managing user authentication state with Firebase.
+- **FirebaseAuthContext:** Context API implementation for managing Firebase authentication across the application.
 
-### `npm start`
+### Component Breakdown
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### Layout Components
+- **NavBar.js:** Displays the navigation bar, integrating theme toggling and user authentication status.
+- **Footer.js:** Renders the application's footer section.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### User Authentication
+- **LoginPage.js, RegisterPage.js:** Handle user login and registration using Firebase authentication.
+- **ProfilePage.js:** Allows users to view and edit their profile information.
 
-### `npm test`
+#### Recipe Exploration
+- **ComplexSearch.js:** Enables advanced recipe search with sorting and filtering options, and manages API calls and pagination.
+- **SearchBar.js:** Provides an input field for recipe searches.
+- **RecipeDetail.js:** Displays detailed information about a specific recipe.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Recipe Management
+- **CreateRecipeForm.js:** A form for users to add new recipes, including various fields like title, image URL, and dietary options.
+- **MyRecipePage.js:** Displays user-submitted recipes and allows for their management.
+- **FavoritesPage.js:** Shows a list of the user's favorite recipes and provides functionality to manage them.
+- **Recipe.js (in Favorites):** Renders individual recipe cards in the favorites list, including options to add or remove from favorites.
 
-### `npm run build`
+#### Additional Components
+- **AboutCards.js:** Offers information cards about the application or user guides.
+- **ThemeToggle.js, themeUtils.js, ThemeWrapper.js:** Manage the application's theme settings and UI consistency.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies and Libraries
+- React and React Router for front-end development.
+- Firebase for user authentication and data management.
+- Material-UI and Styled-Components for UI design.
+- Axios for API requests.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# recipe-frontend
-Frontend React app for recipe finder.
->>>>>>> 9cecbb3424a33fe448b1b683880631c33b72c2bc
+## Live Project Link
+recipe-finder-foodhub.netlify.app

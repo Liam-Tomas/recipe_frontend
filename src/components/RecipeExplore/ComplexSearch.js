@@ -63,7 +63,6 @@ const ComplexSearch = () => {
         }
     }, []);
 
-    // Handler functions for selection changes
     const handleSortChange = (event) => {
         setSort(event.target.value);
         setPage(1); // reset page to 1 when sort changes
@@ -88,13 +87,6 @@ const ComplexSearch = () => {
     const handleSearch = async (searchQuery = query, currentPage = page, currentSort = sort, currentDiet = diet, currentType = type) => {
         // Indicate the start of an API call
         setLoading(true);
-        console.log("Sending search with parameters:", {
-            query: searchQuery,
-            sort: currentSort,
-            diet: currentDiet,
-            type: currentType,
-            page: currentPage,
-        });
 
         // Set up API request details
         const options = {
