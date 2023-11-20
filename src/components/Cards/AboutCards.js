@@ -13,10 +13,15 @@ import { useTheme } from '@mui/material/styles';
 
 
 const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  padding: 20px 130px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 20px 130px;
+
+     @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 20px 20px;
+     }
 
 `;
 

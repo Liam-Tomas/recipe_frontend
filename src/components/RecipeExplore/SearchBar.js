@@ -20,7 +20,7 @@ const StyledSearchContainer = styled('div')`
   background-color: ${(props) => props.theme.palette.background.paper};
   background-color: transparent;
   width: 400px;
-  margin-top: 10px;
+  // margin-top: 10px;
 
   &:hover {
     border: 1px solid ${(props) => props.theme.palette.text.primary};
@@ -28,6 +28,12 @@ const StyledSearchContainer = styled('div')`
 
   &:focus-within {
     border: 1px solid ${(props) => props.theme.palette.primary.main};
+  }
+
+  @media (max-width: 800px) {
+    width: 250px;
+    margin-top: 0px;
+
   }
 `;
 

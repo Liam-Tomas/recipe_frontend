@@ -10,14 +10,68 @@ import InputLabel from '@mui/material/InputLabel';
 import styled from 'styled-components';
 
 const GridContainer = styled.div`
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    listStyle: 'none',
-    padding: '20px',
-    marginTop: '30px',
-    marginBottom: '30px',
-    gap: '25px',
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Responsive layout
+    list-style: none;
+    margin: 30px 5px;
+    gap: 25px;
+
+    @media (max-width: 1300px) {
+        grid-template-columns: repeat(3, 1fr); // 2 columns on smaller screens
+    }
+
+    @media (max-width: 868px) {
+        grid-template-columns: repeat(2, 1fr); // 2 columns on smaller screens
+    }
+
+    @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
+        padding: 0px;
+
+    }
 `;
+
+const ExploreContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+        gap: .1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+`;
+
+
+const PaginationContainer = styled.div`
+    display: flex;
+    justify-content:center;
+    gap: 1rem;
+    margin-top: 1rem;
+`;
+
+
+const StyledSelect = styled(Select)`
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0px;
+    @media (max-width: 768px) {
+        display: none !important;
+    }
+`;
+
+
+const SearchButton = styled(Button)`
+    margin-left: 15px;
+    @media (max-width: 768px) {
+
+    }
+`;
+
 
 // Options for sorting, diet, and type selection
 const SORT_OPTIONS = ['popularity', 'healthiness', 'price', 'time', 'meta-score'];
@@ -147,95 +201,71 @@ const ComplexSearch = () => {
     // Render the search UI and search results
     return (
         <div>
-            <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem',
-            }}>
+            <ExploreContainer>
                 <SearchBar onSearch={performSearch} onChange={setQuery} />
                 <FormControl size="small">
                     <InputLabel id="sort-label" style={{
                         marginTop: '10px'
                     }}>Sort By</InputLabel>
-                    <Select
+                    <StyledSelect
                         labelId="sort-label"
                         id="sort-select"
                         value={sort}
                         onChange={handleSortChange}
                         label="Sort By"
-                        style={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginTop: '10px'
-                        }}
+                        
                     >
                         {SORT_OPTIONS.map((option) => (
                             <MenuItem key={option} value={option}>
                                 {option}
                             </MenuItem>
                         ))}
-                    </Select>
+                    </StyledSelect>
                 </FormControl>
                 <FormControl size="small">
                     <InputLabel id="diet-label" style={{
                         marginTop: '10px'
                     }}>Diet</InputLabel>
-                    <Select
+                    <StyledSelect
                         labelId="diet-label"
                         id="diet-select"
                         value={diet}
                         onChange={handleSetDiet}
                         label="Diet"
-                        style={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginTop: '10px',
-                            width: '100px'
-
-                        }}
                     >
                         {DIET_OPTIONS.map((option) => (
                             <MenuItem key={option} value={option}>
                                 {option}
                             </MenuItem>
                         ))}
-                    </Select>
+                    </StyledSelect>
                 </FormControl>
                 <FormControl size="small">
                     <InputLabel id="diet-label" style={{
                         marginTop: '10px'
                     }}>Type</InputLabel>
-                    <Select
+                    <StyledSelect
                         labelId="type-label"
                         id="type-select"
                         value={type}
                         onChange={handleSetType}
                         label="Diet"
-                        style={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginTop: '10px',
-                            width: '100px'
-
-                        }}
                     >
                         {TYPE_OPTIONS.map((option) => (
                             <MenuItem key={option} value={option}>
                                 {option}
                             </MenuItem>
                         ))}
-                    </Select>
+                    </StyledSelect>
                 </FormControl>
-                <Button
+                <SearchButton
                     variant="outlined"
                     color="primary"
                     onClick={() => performSearch()}  // No need to pass query; it will default to current state
-                    style={{ marginTop: '10px', marginLeft: '15px' }}
                 >
                     Search
-                </Button>
-            </div>
+                </SearchButton>
+            </ExploreContainer>
             {loading ? (
                 <p
                     style={{
@@ -266,28 +296,13 @@ const ComplexSearch = () => {
                         </p>
                     ) : (
                         <>
-                            <GridContainer
-                                style={{
-                                    display: 'grid',
-                                    gridTemplateColumns: 'repeat(4, 1fr)',
-                                    listStyle: 'none',
-                                    padding: '20px',
-                                    marginTop: '30px',
-                                    marginBottom: '30px',
-                                    gap: '25px',
-                                }}
-                            >
+                            <GridContainer>
                                 {recipes.map((recipe) => (
                                     <Recipe key={recipe.id} recipe={recipe} />
                                 ))}
                             </GridContainer>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    gap: '1rem',
-                                    marginTop: '1rem',
-                                }}
+                            <PaginationContainer
+                                
                             >
                                 {!loading && page !== 1 && (
                                     <Button variant="outlined" onClick={handlePrev} disabled={page === 1}>
@@ -299,7 +314,7 @@ const ComplexSearch = () => {
                                         Next
                                     </Button>
                                 )}
-                            </div>
+                            </PaginationContainer>
                         </>
                     )}
                 </>

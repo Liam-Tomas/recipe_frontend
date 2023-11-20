@@ -56,15 +56,10 @@ const Container = styled.div`
   // backgroundImage: 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)',
   // background-image: linear-gradient(to bottom, #dfe9f3 0%, white 100%);
   ;
-`;
 
-
-const Title = styled.div`
-font-size: 1.95rem;
-font-weight: 500;
-// font-family: 'Inter';
-color: ${(props) => props.theme.palette.primary.main};
-
+  @media (max-width: 750px) {
+    text-align: center;
+  }
 `;
 
 const Subtitle = styled.div`
@@ -74,32 +69,27 @@ const Subtitle = styled.div`
   color: ${(props) => props.theme.palette.text.secondary};
   `;
 
-const Image = styled.img`
-  max-width:0%;
-  top:20%;
-  right:3%;
-  position: absolute;
-  z-index: -10;
-`;
-
-const Image2 = styled.img`
-  max-width: 0%;
-  top: 300px;
-  right: 8%;
-  position: absolute;
-`;
-
 const GetStartedBtn = styled.div`
   display: flex;
   justify-content: center;
   alignItems: center;
   padding:180px;
+
+
+  @media (max-width: 750px) {
+    padding:100px;
+
+ }
   `
 
 const MainTitle = styled.div`
   font-size: 3.9rem;
   font-weight: 700;
   font-family: 'Inter';
+
+  @media (max-width: 750px) {
+    font-size: 3rem;
+  }
 `
 
 const ColoredTitle = styled.span`
@@ -115,12 +105,6 @@ const HomePage = () => {
   return (
     <div>
       <Container>
-        {/* <Subtitle>
-          This site is a full-stack MERN application, utilizing Node.js,
-          Express.js, MongoDB, React.js, React Router, and Material-UI.
-          It provides API endpoints for recipe data and user interactions,
-          with MongoDB as the database and a modern UI design.
-        </Subtitle> */}
         {currentUser ? (
           <>
             <MainTitle>Welcome, <ColoredTitle>{currentUser.email}</ColoredTitle></MainTitle>

@@ -12,12 +12,21 @@ import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 const StyledAppBar = styled(AppBar)`
   background-color:  ${(props) => props.theme.palette.background.default};
   padding: 5px 55px;
+
+  @media (max-width: 750px) {
+    padding: 5px 15px;
+  }1
+
+  @media (max-width: 750px) {
+    max-height: 100px; // Adjust this value as needed for mobile devices
+  }
 `
 const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledList = styled(List)`
   width: 400px;
+
 
 `;
 
@@ -29,19 +38,22 @@ const StyledListItem = styled(ListItem)`
     color: ${(props) => (props.isActive ? props.theme.palette.primary.main : 'inherit')};
     font-weight: ${(props) => (props.isActive ? '500' : 'inherit')};
   }
+
 `;
 
 const NavButton = styled(Button)`
-margin-right: 18px;
-color: ${(props) => props.theme.palette.text.primary};
-
-
+  margin-right: 18px;
+  color: ${(props) => props.theme.palette.text.primary};
+  @media (max-width: 750px) {
+    display: none; // Hide the button on smaller screens
+  }
 `;
 
 const Logo = styled(Typography)`
   flex-grow: 1; 
   font-size: 1.4rem;
   color: ${(props) => props.theme.palette.text.primary};
+  
 
   `
 
@@ -101,7 +113,7 @@ export default function NavBar({ theme, setTheme }) {
         {currentUser ? (
           <Box>
             <NavButton component={Link} to="/favorites" variant="text">Favorites</NavButton>
-            <NavButton component={Link} to="/" variant="text">My Recipes</NavButton>
+            <NavButton component={Link} to="/myrecipes" variant="text">My Recipes</NavButton>
             <IconButton size="large" aria-label="account of current user" aria-controls="menu-appbar" aria-haspopup="true" onClick={handleMenu} color="inherit">
               <AccountCircleIcon style={{ color: theme.palette.primary.main, fontSize: '3rem' }} />
             </IconButton>

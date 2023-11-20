@@ -8,6 +8,7 @@ const StyledHeaders = styled.div`
     flex-direction: column;
     align-items: center;
     padding-bottom: 0px;
+    
 `;
 
 const MainContainer = styled.div`
@@ -17,14 +18,20 @@ const MainContainer = styled.div`
     padding-bottom: 75px;
     margin-bottom: 0px;
     margin: 0px 55px;
+    @media (max-width: 1000px) {
+        margin: 0px 30px;
+
+    }
 `
 
 const Title = styled.h1`
-    font-size: 2.7rem;
     font-weight: 600;
     font-family: Inter;
-`
 
+    @media (max-width: 800px) {
+        font-size: 1.5rem;
+    }
+`
 
 const SubTitle = styled.h2`
     font-size: 1.3rem;
@@ -32,6 +39,12 @@ const SubTitle = styled.h2`
     font-family: Inter;
     padding: 25px;
     color: ${(props) => props.theme.palette.text.secondary};
+
+    @media (max-width: 1000px) {
+        font-size: 1.1rem;
+        padding: 20px 5px;
+     
+    }
 
 `
 

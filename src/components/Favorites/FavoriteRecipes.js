@@ -15,6 +15,19 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);   
     gap: 25px;
+
+    @media (max-width: 1300px) {
+        grid-template-columns: repeat(3, 1fr); // 2 columns on smaller screens
+    }
+
+    @media (max-width: 868px) {
+        grid-template-columns: repeat(2, 1fr); // 2 columns on smaller screens
+    }
+
+    @media (max-width: 750px) {
+        grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
+        padding: 0px;
+    }
 `;
 
 const Title = styled.h1`

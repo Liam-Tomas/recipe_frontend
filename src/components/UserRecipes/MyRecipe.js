@@ -9,6 +9,30 @@ import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import { CircularProgress } from '@mui/material'; // Import CircularProgress
+import styled from 'styled-components';
+
+const MyRecipeGrid = styled.ul`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  margin-bottom: 30px;
+  gap: 25px;
+
+  @media (max-width: 1300px) {
+    grid-template-columns: repeat(3, 1fr); // 2 columns on smaller screens
+  }
+
+  @media (max-width: 868px) {
+      grid-template-columns: repeat(2, 1fr); // 2 columns on smaller screens
+  }
+
+  @media (max-width: 750px) {
+      grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
+      padding: 0px;
+  }
+`;
+
+
 
 
 const MyRecipes = () => {
@@ -125,13 +149,7 @@ const MyRecipes = () => {
           <CircularProgress />
         </div>
       ) : (
-        <ul style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          padding: '20px',
-          marginBottom: '30px',
-          gap: '25px',
-        }}>
+        <MyRecipeGrid>
           {recipes.map((recipe) => (
             <MyRecipeCard
               key={recipe._id}
@@ -140,7 +158,7 @@ const MyRecipes = () => {
               onEdit={handleEditRecipe} // pass the function
             />
           ))}
-        </ul>
+        </MyRecipeGrid>
       )}
 
     </div>
