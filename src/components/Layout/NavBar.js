@@ -46,6 +46,7 @@ const NavButton = styled(Button)`
   color: ${(props) => props.theme.palette.text.primary};
   @media (max-width: 750px) {
     display: none; // Hide the button on smaller screens
+    margin-right: 0px;
   }
 `;
 
@@ -53,7 +54,9 @@ const Logo = styled(Typography)`
   flex-grow: 1; 
   font-size: 1.4rem;
   color: ${(props) => props.theme.palette.text.primary};
-  
+  @media (max-width: 750px) {
+    color:  ${(props) => props.theme.palette.background.default};
+  }
 
   `
 
