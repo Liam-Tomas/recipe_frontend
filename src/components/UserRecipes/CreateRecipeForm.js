@@ -13,8 +13,6 @@ const FormWrapper = styled.ul`
   }
 `;
 
-
-
 const CreateRecipeForm = ({ onNewRecipe }) => {
   const theme = useTheme();
 
@@ -63,6 +61,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
           value={recipeData.title}
           onChange={handleChange}
           variant="outlined"
+          required
           style={{ marginBottom: '10px', width: '100%' }}
         />
         <TextField
@@ -82,6 +81,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
             value={recipeData.servings}
             onChange={handleChange}
             variant="outlined"
+            required
             style={{ marginRight: '10px', width: '50%' }}
           />
           <TextField
@@ -92,6 +92,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
             onChange={handleChange}
             variant="outlined"
             style={{ width: '50%' }}
+            required
           />
         </div>
         <TextField
