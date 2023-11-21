@@ -21,7 +21,7 @@ const MainContainer = styled.div`
     margin: 0px 55px;
     @media (max-width: 1000px) {
         margin: 15px; // Adjust left and right margins as needed
-        padding-top: 80px;
+        padding-top: 90px;
         padding-left: 10px;
         padding-right:10px;
         display: flex;
