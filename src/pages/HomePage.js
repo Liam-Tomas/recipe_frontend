@@ -73,30 +73,35 @@ const GetStartedBtn = styled.div`
   alignItems: center;
   padding:180px;
 
-  @media (max-width: 750px) {
+  @media (max-width: 750px) 
     padding:100px;
 
  }
   `
 
 const MainTitle = styled.div`
-  font-size: 3.9rem;
+  font-size: 3.8rem;
   font-weight: 700;
   font-family: 'Inter';
 
   @media (max-width: 750px) {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 
   }
 `
 
-const ColoredTitle = styled.span`
+const ColoredTitleEmail = styled.span`
   color: ${(props) => props.theme.palette.primary.main};
 
   @media (max-width: 750px) {
     font-size: 1.6rem;
 
   }
+
+`
+
+const ColoredTitle = styled.span`
+  color: ${(props) => props.theme.palette.primary.main};
 
 `
 
@@ -110,7 +115,7 @@ const HomePage = () => {
       <Container>
         {currentUser ? (
           <>
-            <MainTitle>Welcome, <ColoredTitle>{currentUser.email}</ColoredTitle></MainTitle>
+            <MainTitle>Welcome, <ColoredTitleEmail>{currentUser.email}</ColoredTitleEmail></MainTitle>
             <Subtitle>
               Search, save, and create your own recipes with ease!
             </Subtitle>
