@@ -170,7 +170,7 @@ const RegisterProfile = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       // setOpenModal(true); // Open the modal
       navigate('/'); // Redirect to homepage
-
+      window.scrollTo(0, 0); // Scroll to the top of the page
 
     } catch (error) {
       console.error("Error during update:", error);

@@ -95,7 +95,7 @@ const ColoredTitleEmail = styled.span`
   color: ${(props) => props.theme.palette.primary.main};
 
   @media (max-width: 750px) {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 
   }
 

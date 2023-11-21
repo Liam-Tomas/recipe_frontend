@@ -50,7 +50,7 @@ const StyledTextField = styled(TextField)`
     width: 300px;
 
   }
-`
+`;
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -65,7 +65,8 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       setMessage('Successfully signed in!');
-      navigate('/')
+      navigate('/');
+      window.scrollTo(0, 0); // Scroll to the top of the page
     } catch (error) {
       console.error(error);
       setMessage('Failed to sign in. Please check your email and password.');
