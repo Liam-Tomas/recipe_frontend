@@ -44,7 +44,6 @@ const StyledRecipe = styled.li`
 
 const MyRecipeCard = ({ recipe, onRemove, onEdit }) => {
   const { title, image, sourceUrl, servings, preparationMinutes, summary, vegetarian, aggregateLikes, sourceName, diets } = recipe;
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const currentUser = useContext(FirebaseAuthContext);
   const [open, setOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState(null);

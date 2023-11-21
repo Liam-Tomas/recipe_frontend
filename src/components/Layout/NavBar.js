@@ -73,6 +73,12 @@ export default function NavBar({ theme, setTheme }) {
     navigate('/');
   };
 
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+    toggleDrawer(false); // This will close the drawer after navigation
+  };  
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -131,21 +137,21 @@ export default function NavBar({ theme, setTheme }) {
       </Toolbar>
       <StyledDrawer anchor="left" open={openDrawer} onClose={() => toggleDrawer(false)}>
         <StyledList>
-          <StyledListItem button component={Link} to="/" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/'}>
+        <StyledListItem button onClick={() => handleNavigation('/')} isActive={location.pathname === '/'}>
             <span>About</span>
           </StyledListItem>
-          <StyledListItem button component={Link} to="/explore" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/explore'} >
+          <StyledListItem button onClick={() => handleNavigation('/explore')} isActive={location.pathname === '/explore'}>
             <span>Explore</span>
           </StyledListItem>
           {currentUser ? (
             <>
-              <StyledListItem button component={Link} to="/favorites" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/favorites'}>
+          <StyledListItem button onClick={() => handleNavigation('/favorites')} isActive={location.pathname === '/favorites'}>
                 <span>Favorites</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/myrecipes" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/myrecipes'}>
+              <StyledListItem button onClick={() => handleNavigation('/myrecipes')} isActive={location.pathname === '/myrecipes'}>
                 <span>My Recipes</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/profile" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/profile'}>
+              <StyledListItem button onClick={() => handleNavigation('/myprofile')} isActive={location.pathname === '/myprofile'}>
                 <span>Profile</span>
               </StyledListItem>
               <StyledListItem button onClick={() => { handleLogout(); toggleDrawer(false); }} >
@@ -154,10 +160,10 @@ export default function NavBar({ theme, setTheme }) {
             </>
           ) : (
             <>
-              <StyledListItem button component={Link} to="/login" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/login'}>
+          <StyledListItem button onClick={() => handleNavigation('/login')} isActive={location.pathname === '/login'}>
                 <span>Login</span>
               </StyledListItem>
-              <StyledListItem button component={Link} to="/register" onClick={() => toggleDrawer(false)} isActive={location.pathname === '/register'}>
+              <StyledListItem button onClick={() => handleNavigation('/register')} isActive={location.pathname === '/register'}>
                 <span>Sign Up</span>
               </StyledListItem>
             </>

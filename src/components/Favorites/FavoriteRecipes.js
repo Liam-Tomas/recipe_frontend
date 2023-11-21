@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Recipe from './Recipe';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import styled from 'styled-components';
-import { CircularProgress } from '@mui/material'; // Import CircularProgress
+import { CircularProgress, Typography } from '@mui/material';
 
 const StyledHeaders = styled.div`
     display: flex;
@@ -52,9 +52,22 @@ const FavoritesContainer = styled.div`
 
     @media (max-width: 750px) {
         margin: 0px 15px;
-
       }
 `
+
+const NoFavoritesMessage = styled.h2`
+  text-align: center;
+  color: ${(props) => props.theme.palette.text.secondary};
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  min-height:50vh;
+  gap:20px;
+  font-size:1.3rem;
+  @media (max-width: 750px) {
+    font-size:.8rem;
+    padding:1.5rem;
+`;
 
 const FavoriteRecipes = () => {
     const currentUser = useContext(FirebaseAuthContext);
@@ -111,6 +124,11 @@ const FavoriteRecipes = () => {
                 <div style={{ display: 'flex', justifyContent: 'center', minHeight: '40vh', alignItems: 'center' }}>
                     <CircularProgress />
                 </div>
+            ) : favoriteRecipes.length === 0 ? (
+                <NoFavoritesMessage>
+                        <h1>You haven't added any recipes to favorites yet.</h1>
+                        <h3>Explore recipes and add them to your favorites!</h3>
+                </NoFavoritesMessage>
             ) : (
                 <GridContainer>
                     {favoriteRecipes.map((favorite) => (
@@ -125,7 +143,7 @@ const FavoriteRecipes = () => {
                                 sourceName: favorite.sourceName,
                                 readyInMinutes: favorite.readyInMinutes,
                             }}
-                            showRemove={true} // set the showRemove prop to true
+                            showRemove={true}
                             onRemove={handleFavoriteRemoved}
                         />
                     ))}

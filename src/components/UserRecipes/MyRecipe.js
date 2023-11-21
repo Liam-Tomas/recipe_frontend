@@ -4,12 +4,12 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import MyRecipeCard from './MyRecipeCard';
 import CreateRecipeForm from './CreateRecipeForm';
-import { Button, Modal } from '@mui/material';
+import { Button, Modal, CircularProgress, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
-import { CircularProgress } from '@mui/material'; // Import CircularProgress
 import styled from 'styled-components';
+
 
 const MyRecipeGrid = styled.ul`
   display: grid;
@@ -29,6 +29,21 @@ const MyRecipeGrid = styled.ul`
   @media (max-width: 750px) {
       grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
       padding: 0px;
+  }
+`;
+
+const NoRecipesMessage = styled.h2`
+  text-align: center;
+  color: ${(props) => props.theme.palette.text.secondary};
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  min-height:50vh;
+  gap:20px;
+  font-size:1.3rem;
+  @media (max-width: 750px) {
+    font-size:.8rem;
+    padding:1.5rem;
   }
 `;
 
@@ -139,7 +154,6 @@ const MyRecipes = () => {
         </div>
       </Modal>
       {loading ? (
-        // If loading is true, display the CircularProgress component
         <div style={{
           display: 'flex',
           justifyContent: 'center',
@@ -148,6 +162,11 @@ const MyRecipes = () => {
         }}>
           <CircularProgress />
         </div>
+      ) : recipes.length === 0 ? (
+        <NoRecipesMessage>
+          <h1>You haven't created any recipes yet.</h1>
+          <h3>Start by adding a new recipe to your collection! </h3>
+        </NoRecipesMessage>
       ) : (
         <MyRecipeGrid>
           {recipes.map((recipe) => (
