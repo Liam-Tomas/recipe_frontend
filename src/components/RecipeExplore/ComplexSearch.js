@@ -14,7 +14,7 @@ const GridContainer = styled.div`
     grid-template-columns: repeat(4, 1fr);
     // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); // Responsive layout
     list-style: none;
-    margin: 30px 5px;
+    margin: 30px 10px;
     gap: 25px;
 
     @media (max-width: 1300px) {
@@ -40,8 +40,8 @@ const ExploreContainer = styled.div`
     @media (max-width: 768px) {
         gap: .1rem;
         display: flex;
-        align-items: center;
-        justify-content: center; 
+        align-items: left;
+        justify-content: left; 
     }
 `;
 
