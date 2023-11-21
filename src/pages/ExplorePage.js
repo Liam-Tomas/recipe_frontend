@@ -11,6 +11,8 @@ const StyledHeaders = styled.div`
 
     @media (max-width: 1000px) {
         text-align: left;
+        align-items:center;
+
     }
 `;
 
@@ -18,9 +20,12 @@ const MainContainer = styled.div`
     padding-top: 115px;
     padding-bottom: 75px;
     margin: 0px 55px;
-    
     @media (max-width: 1000px) {
-        margin: 0px 30px;
+        margin: 0px 0px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
     }
 `
 
@@ -32,6 +37,7 @@ const Title = styled.h1`
         font-size: 1.5rem;
         padding: 0px;
         margin: 0px;
+        
     }
 `
 
@@ -45,6 +51,8 @@ const SubTitle = styled.h2`
     @media (max-width: 1000px) {
         font-size: 1.05rem;
         padding: 20px 0px;
+
+
      
     }
 

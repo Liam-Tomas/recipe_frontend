@@ -3,6 +3,8 @@ import Recipe from './Recipe';
 import { FirebaseAuthContext } from '../../FirebaseAuthContext';
 import styled from 'styled-components';
 import { CircularProgress, Typography } from '@mui/material';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const StyledHeaders = styled.div`
     display: flex;
@@ -127,7 +129,7 @@ const FavoriteRecipes = () => {
             ) : favoriteRecipes.length === 0 ? (
                 <NoFavoritesMessage>
                         <h1>You haven't added any recipes to favorites yet.</h1>
-                        <h3>Explore recipes and add them to your favorites!</h3>
+                        <h3 ><Button component={Link} to="/explore" style={{ fontSize: '18px', marginRight: '0px' }}>Explore</Button> recipes and add them to your favorites!</h3>
                 </NoFavoritesMessage>
             ) : (
                 <GridContainer>
