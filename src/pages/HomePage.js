@@ -67,16 +67,17 @@ const Subtitle = styled.div`
   }
   `;
 
-const GetStartedBtn = styled.div`
+const GetStartedBtnContainer = styled.div`
   display: flex;
   justify-content: center;
   alignItems: center;
   padding:180px;
 
-  @media (max-width: 750px) 
+  @media (max-width: 750px) {
     padding:100px;
 
- }
+  }
+
   `
 
 const MainTitle = styled.div`
@@ -103,7 +104,14 @@ const ColoredTitleEmail = styled.span`
 const ColoredTitle = styled.span`
   color: ${(props) => props.theme.palette.primary.main};
 
+`;
+
+const GetStartedBtn = styled(Button)`
+  color:red;
+
 `
+
+
 
 const HomePage = () => {
   const recipePhoto = 'https://spoonacular.com/application/frontend/images/food-api/ontology2.svg';
@@ -139,11 +147,11 @@ const HomePage = () => {
         )}
       </Container >
       <AboutCards />
-      <GetStartedBtn>
-        <Button component={Link} to="/register" variant="outlined" style={{
+      <GetStartedBtnContainer>
+        <GetStartedBtn component={Link} to="/register" variant="outlined" style={{
           fontSize: '17px',
-        }}>Get Started</Button>
-      </GetStartedBtn>
+        }}>Get Started</GetStartedBtn>
+      </GetStartedBtnContainer>
     </div >
   );
 };
