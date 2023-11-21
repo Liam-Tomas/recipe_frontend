@@ -181,18 +181,24 @@ const MyRecipes = () => {
           </StyledButtonContainer>
         </NoRecipesMessage>
       ) : (
-        <MyRecipeGrid>
-          {recipes.map((recipe) => (
-            <MyRecipeCard
-              key={recipe._id}
-              recipe={recipe}
-              onRemove={handleRemoveRecipe}
-              onEdit={handleEditRecipe} // pass the function
-            />
-          ))}
-
-        </MyRecipeGrid>
-
+        <div>
+          <MyRecipeGrid>
+            {recipes.map((recipe) => (
+              <MyRecipeCard
+                key={recipe._id}
+                recipe={recipe}
+                onRemove={handleRemoveRecipe}
+                onEdit={handleEditRecipe} // pass the function
+              />
+            ))}
+          </MyRecipeGrid>
+          <StyledButtonContainer>
+            <Button onClick={() => setShowModal(true)}
+              type="submit" variant="outlined" color="primary">
+              Create Recipe
+            </Button>
+          </StyledButtonContainer>
+        </div>
       )}
 
     </div>
