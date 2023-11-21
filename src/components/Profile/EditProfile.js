@@ -35,8 +35,10 @@ const Container = styled.div`
     border-radius: 5px;
 
     @media (max-width: 750px) {
-        background-color: none;
-    }
+        padding: 20px;
+        background-color: transparent;
+        box-shadow: none;
+      }
 `
 
 function EditProfile() {

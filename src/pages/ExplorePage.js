@@ -6,21 +6,21 @@ import { Typography } from '@mui/material';
 const StyledHeaders = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-bottom: 0px;
-    
+    text-align: center;
+
+    @media (max-width: 1000px) {
+        text-align: left;
+    }
 `;
 
 const MainContainer = styled.div`
-    // background: 'linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%)',
-    // background: 'linear-gradient(to bottom, #f0f2f0, #000c40)',
     padding-top: 115px;
     padding-bottom: 75px;
-    margin-bottom: 0px;
     margin: 0px 55px;
+    
     @media (max-width: 1000px) {
         margin: 0px 30px;
-
     }
 `
 
@@ -30,6 +30,8 @@ const Title = styled.h1`
 
     @media (max-width: 800px) {
         font-size: 1.5rem;
+        padding: 0px;
+        margin: 0px;
     }
 `
 
@@ -41,8 +43,8 @@ const SubTitle = styled.h2`
     color: ${(props) => props.theme.palette.text.secondary};
 
     @media (max-width: 1000px) {
-        font-size: 1.1rem;
-        padding: 20px 5px;
+        font-size: 1.05rem;
+        padding: 20px 0px;
      
     }
 

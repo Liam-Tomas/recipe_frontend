@@ -14,19 +14,15 @@ const StyledAppBar = styled(AppBar)`
   padding: 5px 55px;
 
   @media (max-width: 750px) {
-    padding: 5px 15px;
-  }1
+    padding: 5px 5px;
+  };
 
-  @media (max-width: 750px) {
-    max-height: 100px; // Adjust this value as needed for mobile devices
-  }
 `
 const StyledDrawer = styled(Drawer)`
 `;
 
 const StyledList = styled(List)`
   width: 400px;
-
 
 `;
 
@@ -55,7 +51,7 @@ const Logo = styled(Typography)`
   font-size: 1.4rem;
   color: ${(props) => props.theme.palette.text.primary};
   @media (max-width: 750px) {
-    color:  ${(props) => props.theme.palette.background.default};
+    color: transparent;
   }
 
   `

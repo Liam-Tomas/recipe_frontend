@@ -28,7 +28,6 @@ const GridContainer = styled.div`
     @media (max-width: 750px) {
         grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
         padding: 0px;
-
     }
 `;
 
@@ -68,7 +67,7 @@ const StyledSelect = styled(Select)`
 const SearchButton = styled(Button)`
     margin-left: 15px;
     @media (max-width: 768px) {
-
+        height: 47px;
     }
 `;
 

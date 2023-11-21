@@ -35,7 +35,26 @@ const Title = styled.h1`
     font-weight: 600;
     margin-bottom: 30px;
     font-family: Inter;
+
+    @media (max-width: 750px) {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
 `;
+
+
+const FavoritesContainer = styled.div`
+    background: '';
+    padding-top: 115px;
+    padding-bottom: 75px;
+    margin-bottom: 0px;
+    margin: 0px 55px;
+
+    @media (max-width: 750px) {
+        margin: 0px 15px;
+
+      }
+`
 
 const FavoriteRecipes = () => {
     const currentUser = useContext(FirebaseAuthContext);
@@ -81,14 +100,7 @@ const FavoriteRecipes = () => {
 
 
     return (
-        <section
-            style={{
-                background: '',
-                paddingTop: '115px',
-                paddingBottom: '75px',
-                marginBottom: '0px',
-                margin: '0px 55px',
-            }}
+        <FavoritesContainer
         >
             <StyledHeaders>
                 <Title>
@@ -119,7 +131,7 @@ const FavoriteRecipes = () => {
                     ))}
                 </GridContainer>
             )}
-        </section>
+        </FavoritesContainer>
     );
 };
 

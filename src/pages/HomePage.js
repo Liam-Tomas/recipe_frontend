@@ -35,14 +35,9 @@ import { Button } from '@mui/material';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import AboutCards from '../components/Cards/AboutCards'
-import { Typography } from '@mui/material';
-import HomePic from '../images/home_image1.svg'
-import HomePic2 from '../images/home_image2.svg'
 import { FirebaseAuthContext } from '../FirebaseAuthContext';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
-
-
 
 const Container = styled.div`
   display: flex;
@@ -53,8 +48,6 @@ const Container = styled.div`
   height: 85vh;
   padding: 0px 30px;
   gap: 15px;
-  // backgroundImage: 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)',
-  // background-image: linear-gradient(to bottom, #dfe9f3 0%, white 100%);
   ;
 
   @media (max-width: 750px) {

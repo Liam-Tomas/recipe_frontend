@@ -15,6 +15,7 @@ const StyledSearchContainer = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
+  height:47px;
   border: 1px solid ${(props) => props.theme.palette.text.tertiary};
   border-radius: 5px;
   background-color: ${(props) => props.theme.palette.background.paper};

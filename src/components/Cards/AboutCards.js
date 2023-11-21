@@ -48,6 +48,14 @@ const LogoContainer = styled.div`
     margin-bottom:20px;
 `
 
+const StyledTitle = styled(Typography)`
+    margin: 15px 0px !important;
+    font-size: 1.1rem;
+    color: ${(props) => props.theme.palette.text.secondary};
+
+`
+
+
 const TechnicalCards = () => {
     const theme = useTheme();
     const technicalData = [
@@ -96,11 +104,7 @@ const TechnicalCards = () => {
                 <StyledCard key={index}>
                     <CardContent>
                         <Typography variant="h5">{technical.title}</Typography>
-                        <Typography variant="body1" style={{
-                            margin: '20px 0px',
-                            fontSize: '1.1rem',
-                            color: theme.palette.text.secondary,
-                        }}>{technical.description}</Typography>
+                        <StyledTitle variant="body1">{technical.description}</StyledTitle>
                         <LogoContainer>
                             <LogoImage src={technical.logo} alt={`${technical.title} Logo`} />
                         </LogoContainer>

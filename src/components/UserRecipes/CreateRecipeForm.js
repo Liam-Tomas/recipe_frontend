@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
 import { Button, TextField, FormControlLabel, Checkbox } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import styled from 'styled-components';
+
+const FormWrapper = styled.ul`
+  background-color: ${(props) => props.theme.palette.background.paper};
+  width: 550px;
+  padding: 50px;
+
+  @media (max-width: 750px) {
+    width: 100%;
+  }
+`;
+
 
 
 const CreateRecipeForm = ({ onNewRecipe }) => {
@@ -38,11 +50,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
   };
 
   return (
-    <div style={{
-      width: '550px',
-      backgroundColor: theme.palette.background.default,
-      padding: '50px'
-    }}>
+    <FormWrapper>
       <form onSubmit={handleSubmit} style={{
         display: 'flex',
         flexDirection: 'column',
@@ -133,7 +141,7 @@ const CreateRecipeForm = ({ onNewRecipe }) => {
           Create Recipe
         </Button>
       </form>
-    </div>
+    </FormWrapper>
   );
 };
 

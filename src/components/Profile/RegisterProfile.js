@@ -29,6 +29,15 @@ const RegisterForm = styled.div`
   }
 `;
 
+const StyledTextField = styled(TextField)`
+  width: 360px;
+  margin-bottom: 100px;
+  @media (max-width: 750px) {
+    width: 300px;
+
+  }
+`;
+
 
 const RegisterProfile = () => {
   const [email, setEmail] = useState('');
@@ -58,29 +67,20 @@ const RegisterProfile = () => {
           marginBottom: '25px',
           fontWeight: '500',
         }}>Sign Up</h1>
-        <TextField
+        <StyledTextField
           helperText="Please enter your email"
           id="email"
           name="email"
           label="Email"
-          // value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "360px",
-            margin: '10px',
-          }}
         />
-        <TextField
+        <StyledTextField
           helperText="Please enter your password"
           id="password"
           name="password"
           label="Password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "360px",
-            marginBottom: '10px'
-          }}
         />
         <Button
           type="submit"

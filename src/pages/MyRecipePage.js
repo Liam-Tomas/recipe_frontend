@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 
 const StyledHeaders = styled.div`
   display: flex;
-align-items: center;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -14,6 +14,10 @@ const MyRecipeContainer = styled.div`
   padding-top: 115px;
   padding-bottom: 75px;
   margin: 0px 55px;
+
+  @media (max-width: 750px) {
+    margin: 0px 15px;
+  }
 `
 
 const Title = styled.h1`
@@ -21,6 +25,12 @@ const Title = styled.h1`
   font-weight: 600;
   font-family: Inter;
   margin-bottom: 10px;
+
+  @media (max-width: 750px) {
+    font-size: 2rem;
+    margin-bottom: 20px;
+
+  }
 `
 
 function MyRecipePage() {

@@ -12,10 +12,8 @@ const FormContainer = styled.div`
   align-items: center;
   text-align: center;
   min-height:94vh;
-
   @media (max-width: 750px) {
     min-height: 90vh;
-    padding: 20px;
     background-color: transparent;
     box-shadow: none;
   }
@@ -45,6 +43,15 @@ const Title = styled.h1`
   margin-bottom: 25px;
 `
 
+const StyledTextField = styled(TextField)`
+  width: 360px;
+  margin-bottom: 100px;
+  @media (max-width: 750px) {
+    width: 300px;
+
+  }
+`
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -69,19 +76,15 @@ const Login = () => {
     <FormContainer>
       <StyledForm onSubmit={handleLogin}>
         <Title >Login</Title>
-        <TextField
+        <StyledTextField
           helperText="Please enter your email"
           id="email"
           name="email"
           label="Email"
           // value={email}
           onChange={(e) => setEmail(e.target.value)}
-          style={{
-            width: "360px",
-            marginBottom: '10px'
-          }}
         />
-        <TextField
+        <StyledTextField
           helperText="Please enter your password"
           id="password"
           name="password"
@@ -89,10 +92,6 @@ const Login = () => {
           type="password"
           // value={password}
           onChange={(e) => setPassword(e.target.value)}
-          style={{
-            width: "360px",
-            marginBottom: '10px'
-          }}
         />
         <div>
           <Button
