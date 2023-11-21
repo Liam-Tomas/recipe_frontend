@@ -21,6 +21,10 @@ const StyledRecipe = styled.li`
   border-radius:5px;
   max-width: 350px;
 
+  @media (max-width: 768px) {
+    max-width: 380px;
+  }
+
   .card {
     background-color: ${props => props.theme.palette.background.paper};
     display: flex;

@@ -8,11 +8,10 @@ const StyledHeaders = styled.div`
     flex-direction: column;
     padding-bottom: 0px;
     text-align: center;
-
     @media (max-width: 1000px) {
         text-align: left;
-        align-items:center;
-
+        padding: 0rem .8rem;
+        align-items:flex-start; to keep the contents aligned to the left
     }
 `;
 
@@ -21,23 +20,18 @@ const MainContainer = styled.div`
     padding-bottom: 75px;
     margin: 0px 55px;
     @media (max-width: 1000px) {
-        margin: 0px 0px;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-
+        margin: 15px; // Adjust left and right margins as needed
+        display: flex;
+        flex-direction: column;
+        align-items:center; to keep the contents aligned to the left
     }
 `
 
 const Title = styled.h1`
     font-weight: 600;
     font-family: Inter;
-
     @media (max-width: 800px) {
-        font-size: 1.5rem;
-        padding: 0px;
-        margin: 0px;
-        
+        font-size: 1.5rem;  
     }
 `
 
@@ -50,10 +44,8 @@ const SubTitle = styled.h2`
 
     @media (max-width: 1000px) {
         font-size: 1.05rem;
-        padding: 20px 0px;
+        padding:20px 0px;
 
-
-     
     }
 
 `
