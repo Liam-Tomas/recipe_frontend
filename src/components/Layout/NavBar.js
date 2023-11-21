@@ -151,7 +151,7 @@ export default function NavBar({ theme, setTheme }) {
               <StyledListItem button onClick={() => handleNavigation('/myrecipes')} isActive={location.pathname === '/myrecipes'}>
                 <span>My Recipes</span>
               </StyledListItem>
-              <StyledListItem button onClick={() => handleNavigation('/myprofile')} isActive={location.pathname === '/myprofile'}>
+              <StyledListItem button onClick={() => handleNavigation('/profile')} isActive={location.pathname === '/myprofile'}>
                 <span>Profile</span>
               </StyledListItem>
               <StyledListItem button onClick={() => { handleLogout(); toggleDrawer(false); }} >
