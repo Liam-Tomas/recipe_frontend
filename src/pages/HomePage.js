@@ -42,7 +42,6 @@ import { Link } from 'react-router-dom';
 const Container = styled.div`
   display: flex;
   align-items:center;
-  // text-align: center;
   justify-content: center;
   flex-direction: column;
   height: 85vh;
@@ -51,7 +50,9 @@ const Container = styled.div`
   ;
 
   @media (max-width: 750px) {
-    text-align: center;
+    align-items:start;
+    margin:10px;
+
   }
 `;
 
@@ -62,7 +63,7 @@ const Subtitle = styled.div`
   color: ${(props) => props.theme.palette.text.secondary};
 
   @media (max-width: 750px) {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   `;
 
@@ -71,7 +72,6 @@ const GetStartedBtn = styled.div`
   justify-content: center;
   alignItems: center;
   padding:180px;
-
 
   @media (max-width: 750px) {
     padding:100px;
@@ -85,12 +85,18 @@ const MainTitle = styled.div`
   font-family: 'Inter';
 
   @media (max-width: 750px) {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+
   }
 `
 
 const ColoredTitle = styled.span`
   color: ${(props) => props.theme.palette.primary.main};
+
+  @media (max-width: 750px) {
+    font-size: 1.6rem;
+
+  }
 
 `
 
