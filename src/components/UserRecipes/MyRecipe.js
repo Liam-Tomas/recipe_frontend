@@ -38,7 +38,7 @@ const NoRecipesMessage = styled.h2`
   display:flex;
   flex-direction: column;
   justify-content:center;
-  min-height:50vh;
+  min-height:40vh;
   gap:20px;
   font-size:1.3rem;
   @media (max-width: 750px) {
@@ -47,7 +47,12 @@ const NoRecipesMessage = styled.h2`
   }
 `;
 
-
+const StyledButtonContainer = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-top: 50px;
+`;
 
 
 const MyRecipes = () => {
@@ -177,9 +182,16 @@ const MyRecipes = () => {
               onEdit={handleEditRecipe} // pass the function
             />
           ))}
-        </MyRecipeGrid>
-      )}
 
+        </MyRecipeGrid>
+
+      )}
+      <StyledButtonContainer>
+        <Button onClick={() => setShowModal(true)}
+          type="submit" variant="outlined" color="primary">
+          Create Recipe
+        </Button>
+      </StyledButtonContainer>
     </div>
   );
 };
