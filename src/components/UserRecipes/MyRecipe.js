@@ -44,14 +44,16 @@ const NoRecipesMessage = styled.h2`
   @media (max-width: 750px) {
     font-size:.8rem;
     padding:1.5rem;
+
   }
 `;
 
 const StyledButtonContainer = styled.div`
   display:flex;
+  color:red;
   align-items:center;
   justify-content:center;
-  margin-top: 50px;
+  margin-top: 20px;
 `;
 
 
@@ -171,6 +173,12 @@ const MyRecipes = () => {
         <NoRecipesMessage>
           <h1>You haven't created any recipes yet.</h1>
           <h3>Start by adding a new recipe to your collection! </h3>
+          <StyledButtonContainer>
+            <Button onClick={() => setShowModal(true)}
+              type="submit" variant="outlined" color="primary">
+              Create Recipe
+            </Button>
+          </StyledButtonContainer>
         </NoRecipesMessage>
       ) : (
         <MyRecipeGrid>
@@ -186,12 +194,7 @@ const MyRecipes = () => {
         </MyRecipeGrid>
 
       )}
-      <StyledButtonContainer>
-        <Button onClick={() => setShowModal(true)}
-          type="submit" variant="outlined" color="primary">
-          Create Recipe
-        </Button>
-      </StyledButtonContainer>
+
     </div>
   );
 };
