@@ -9,6 +9,10 @@ const SearchContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 800px) {
+
+  }
 `;
 
 const StyledSearchContainer = styled('div')`
@@ -21,6 +25,7 @@ const StyledSearchContainer = styled('div')`
   background-color: ${(props) => props.theme.palette.background.paper};
   background-color: transparent;
   width: 400px;
+  
   // margin-top: 10px;
 
   &:hover {
@@ -34,6 +39,7 @@ const StyledSearchContainer = styled('div')`
   @media (max-width: 800px) {
     width: 250px;
     margin-top: 0px;
+
 
   }
 `;

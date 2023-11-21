@@ -12,7 +12,6 @@ import { Drawer, List, ListItem, ListItemText } from '@mui/material';
 const StyledAppBar = styled(AppBar)`
   background-color:  ${(props) => props.theme.palette.background.default};
   padding: 5px 55px;
-
   @media (max-width: 750px) {
     padding: 5px 5px;
   };

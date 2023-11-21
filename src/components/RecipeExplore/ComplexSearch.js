@@ -27,7 +27,7 @@ const GridContainer = styled.div`
 
     @media (max-width: 750px) {
         grid-template-columns: repeat(1, 1fr); // 2 columns on smaller screens
-        padding: 0px;
+        padding: 0px 0px;
         margin: 30px 0px;
         gap:20px;
         align-items:center;

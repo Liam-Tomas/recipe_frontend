@@ -10,7 +10,7 @@ const StyledHeaders = styled.div`
     text-align: center;
     @media (max-width: 1000px) {
         text-align: left;
-        padding: 0rem .8rem;
+        padding: 0rem 0rem;
         align-items:flex-start; to keep the contents aligned to the left
     }
 `;
@@ -21,6 +21,9 @@ const MainContainer = styled.div`
     margin: 0px 55px;
     @media (max-width: 1000px) {
         margin: 15px; // Adjust left and right margins as needed
+        padding-top: 80px;
+        padding-left: 10px;
+        padding-right:10px;
         display: flex;
         flex-direction: column;
         align-items:center; to keep the contents aligned to the left
